@@ -1,0 +1,67 @@
+
+
+# basic settings
+baseurl = "http://xakz.github.io/"
+title = "Xakz's"
+googleAnalytics = ""
+theme = "after-dark"
+paginate = 13
+enableRobotsTXT = true
+enableEmoji = true
+disqusShortname = ""
+footnoteReturnLinkContents = "↩"
+SectionPagesMenu = "main"
+# color-codes for highlighting derived from this style
+#pygmentsStyle = "monokai"
+# true: use pygments-css or false: color-codes directly
+#pygmentsUseClasses = false
+
+# build settings
+publishDir = "../master/"
+verbose = true
+
+# i18n
+languageCode = "fr"
+defaultContentLanguage = "fr"
+defaultContentLanguageInSubdir = false
+
+# markdown processor
+[blackfriday]
+  hrefTargetBlank = true
+
+[params]
+  description = "some description"
+  author = "Xakz"
+  hide_author = false # Optional, set true to hide author name on posts
+  show_menu = true # Optional, set true to enable section menu
+  powered_by = true # Optional, set false to disable credits
+  images = [] # Suggested, controls default Open Graph images
+  theme_variant = "" # Optional, for use to overriding default theme
+  
+[params.seo.webmaster_verifications]
+  google = "" # Optional, Google verification code
+  bing = "" # Optional, Bing verification code
+  alexa = "" # Optional, Alexa verification code
+  yandex = "" # Optional, Yandex verification code
+
+[[menu.main]]
+  name = "Home"
+  weight = 1
+  identifier = "home"
+  url = "/"
+[[menu.main]]
+  name = "Posts"
+  weight = 2
+  identifier = "post"
+  url = "/post/"
+[[menu.main]]
+  name = "Catégories"
+  weight = 3
+  identifier = "categories"
+  url = "/categories/"
+[[menu.main]]
+  name = "Tags"
+  weight = 4
+  identifier = "tag"
+  url = "/tags/"
+  
