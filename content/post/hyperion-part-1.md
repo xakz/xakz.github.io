@@ -5,7 +5,7 @@ description = """
 Création d'un serveur tout-en-un, avec toutes les
 fonctionnalités dont un devOps peut rêver: Introduction"""
 tags = ["linux", "xen", "admin", "hardware", "network"]
-title = "Hyperion, Round 0"
+title = "Hyperion, routeur tout-en-un: Round 0 - Préambule"
 toc = true
 next = "/post/hyperion-part-2/"
 +++
