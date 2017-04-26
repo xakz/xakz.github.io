@@ -114,6 +114,6 @@ installation.
 
 EDIT: Depuis, ils ont sorti le
 [raspberry pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/),
-il faut que je [teste ça](/post/raspberry-pi-3).
+il faut que je teste ça.
 
 
