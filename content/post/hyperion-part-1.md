@@ -13,13 +13,16 @@ next = "/post/hyperion-part-2/"
 L'idée c'est de nous faire une machine **vraiment-tout-en-un** à pas trop
 cher. Ça tombe bien on avait justement une carte mère avec son processeur plutôt
 pas mal qui traînait à la maison. c'est
-une [MSI B75MA-E33](https://www.msi.com/Motherboard/B75MA-E33.html) avec
+une [MSI B75MA-E33][] avec
 un
-[Celeron G1610](http://ark.intel.com/products/71072/Intel-Celeron-Processor-G1610-2M-Cache-2_60-GHz).
+[Celeron G1610][].
 Alors OK, les gamers vont me huer ici, mais je rappelle que le but c'est de
 minimiser la consommation en maximisant des fonctionnalités. Et il y a tout ce
 qu'il faut: **1Gbps**, **USB3**, **SATA 6Gb/s**, **HDMI**, **virtualisation**,
 et même un petit format pour rentrer dans tous les boîtiers.
+
+[MSI B75MA-E33]: https://www.msi.com/Motherboard/B75MA-E33.html
+[Celeron G1610]: http://ark.intel.com/products/71072/Intel-Celeron-Processor-G1610-2M-Cache-2_60-GHz
 
 # C koikonveu ? (ou "cahier des charges" pour les puristes)
 Voilà ce que nous voulons avoir comme service basiques:
@@ -65,11 +68,12 @@ différent, sur lequel on a aucun contrôle, dont les fonctionnalités, pour un
 utilisateur chevronné, laissent réellement à désirer.
 
 Et puis bon, ça fini par s'accumuler niveau consommation électrique, 10W par ci,
-5W par là, avec des alimentations que ne sont même pas
-a [découpage](https://fr.wikipedia.org/wiki/Alimentation_%C3%A0_d%C3%A9coupage)
-la plupart du temps, donc l'alimentation consomme autant lorsque l'appareil est
-en "idle" que lorsqu'il est en pleine utilisation. Heureusement, ces dernières
+5W par là, avec des alimentations que ne sont même pas a [découpage][] la
+plupart du temps, donc l'alimentation consomme autant lorsque l'appareil est en
+"idle" que lorsqu'il est en pleine utilisation. Heureusement, ces dernières
 années, ce dernier point s'est largement amélioré.
+
+[découpage]: https://fr.wikipedia.org/wiki/Alimentation_%C3%A0_d%C3%A9coupage
 
 Exemple: la "box" ADSL:
 
