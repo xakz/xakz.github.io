@@ -4,9 +4,10 @@
     <meta name="generator" content="Hugo 0.21-DEV" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xakz&#39;s</title>
-    <meta name="description" content="some description">
-    <meta name="keywords" content="administration, big data, hyperion, ">
+    <title>Hyperion, routeur tout-en-un: Round 0 - Préambule | Xakz&#39;s</title>
+    <meta name="description" content="Création d&#39;un serveur tout-en-un, avec toutes les
+fonctionnalités dont un devOps peut rêver: Introduction">
+    <meta name="keywords" content="linux, xen, admin, hardware, network">
     
     
     
@@ -16,14 +17,17 @@
   <meta name="author" content="Xakz">
 
 
-    <meta property="og:title" content="Xakz&#39;s" />
-<meta property="og:description" content="some description" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://xakz.github.io/" />
+    <meta property="og:title" content="Hyperion, routeur tout-en-un: Round 0 - Préambule" />
+<meta property="og:description" content="Création d&#39;un serveur tout-en-un, avec toutes les
+fonctionnalités dont un devOps peut rêver: Introduction" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://xakz.github.io/post/hyperion-part-1/" />
 
 
 
-<meta property="og:updated_time" content="2017-04-23T11:31:51&#43;02:00"/>
+<meta property="article:published_time" content="2016-01-16T09:20:34&#43;02:00"/>
+<meta property="article:modified_time" content="2016-01-16T09:20:34&#43;02:00"/>
+
 
 
 
@@ -42,18 +46,12 @@
     <meta name="theme-color" content="#000">
 
     
-      
-
-
-
-
     
     
+    <link rel="canonical" href="http://xakz.github.io/post/hyperion-part-1/">
     
-      <link href="http://xakz.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Xakz&#39;s" />
     
-    <link rel="canonical" href="http://xakz.github.io/">
-    
+      <link rel="next" href="/post/hyperion-part-2/">
     
     <link rel="icon" sizes="any" href="data:image/svg+xml,%3Csvg%20viewBox='0%200%2046%2045'%20xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3EAfter%20Dark%3C/title%3E%3Cpath%20d='M.708%2045L23%20.416%2045.292%2045H.708zM35%2038L23%2019%2011%2038h24z'%20fill='%23000'/%3E%3C/svg%3E">
 
@@ -207,9 +205,9 @@ figure:hover:before { opacity: 0; }
   <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
     
     
-      <a itemprop="url" class="active" href="/"><span itemprop="name">Home</span></a>
+      <a itemprop="url" class="" href="/"><span itemprop="name">Home</span></a>
     
-      <a itemprop="url" class="" href="/post/"><span itemprop="name">Posts</span></a>
+      <a itemprop="url" class="active" href="/post/"><span itemprop="name">Posts</span></a>
     
       <a itemprop="url" class="" href="/categories/"><span itemprop="name">Catégories</span></a>
     
@@ -220,131 +218,22 @@ figure:hover:before { opacity: 0; }
 
 </header>
     <main>
-  <header>
-    <h1>Xakz&#39;s</h1>
-  </header>
-  
-    <article itemscope itemtype="http://schema.org/CreativeWork">
-  <header>
-    <h2 itemprop="name">
-      <a href="/post/hadoop-dev-server/">Installer un pseudo-cluster Hadoop</a>
-    </h2>
+  <article itemscope itemtype="http://schema.org/BlogPosting">
     
-      <p class="muted"><svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-  <circle cx="16" cy="16" r="14" />
-  <path d="M16 8 L16 16 20 20" />
-</svg>
-<span>5 minute read</span>
-<svg style="margin-bottom: -3px" class="i-edit" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-  <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
-</svg>
+<meta itemprop="name" content="Hyperion, routeur tout-en-un: Round 0 - Préambule">
+<meta itemprop="description" content="Création d&#39;un serveur tout-en-un, avec toutes les
+fonctionnalités dont un devOps peut rêver: Introduction">
 
-  Published: <time datetime="2017-04-23T11:31:51&#43;02:00">23 Apr, 2017</time>
 
-</p>
-    
-  </header>
-  
-    <blockquote itemprop="headline">Vous voulez vous essayer au Big Data ? C&#39;est par ici !</blockquote>
-  
-  <div itemprop="description">
-    Alors bien sûr, il y a les VMs Cloudera mais elles nécessitent pas mal de RAM et, avec leur propre Cloudera Manager, nous éloignent des outils basiques de chez Apache. Même si ils font apparemment du bon boulot, après tout, leur but, c&rsquo;est de faire un peu de pub et de vendre du support.
-On va plutôt partir ici sur une Debian 8 comme base et détailler les étapes pour avoir son petit pseudo-cluster Hadoop de dev.
-  </div>
-  
-    <p><a itemprop="url" href="/post/hadoop-dev-server/">Read More&nbsp;&raquo;</a></p>
-  
-  <meta itemprop="inLanguage" content="fr">
-  <meta itemprop="datePublished" content="2017-04-23T11:31:51&#43;02:00">
-  <meta itemprop="dateModified" content="2017-04-23T11:31:51&#43;02:00">
-  
-</article>
+<meta itemprop="dateModified" content="2016-01-16T09:20:34&#43;02:00" />
+<meta itemprop="wordCount" content="708">
 
-  
-    <article itemscope itemtype="http://schema.org/CreativeWork">
-  <header>
-    <h2 itemprop="name">
-      <a href="/post/hyperion-part-3/">Hyperion, routeur tout-en-un: Round 2 - Le réseau</a>
-    </h2>
-    
-      <p class="muted"><svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-  <circle cx="16" cy="16" r="14" />
-  <path d="M16 8 L16 16 20 20" />
-</svg>
-<span>11 minute read</span>
-<svg style="margin-bottom: -3px" class="i-edit" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-  <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
-</svg>
 
-  Published: <time datetime="2016-01-22T13:53:21&#43;02:00">22 Jan, 2016</time>
 
-</p>
-    
-  </header>
-  
-    <blockquote itemprop="headline">Mise en place de toute la tuyauterie réseau, un vrai déluge d&#39;interface !
-</blockquote>
-  
-  <div itemprop="description">
-    Haaaaa le réseau :&lsquo;-) J&rsquo;adore ça !
-Au précédant post j&rsquo;avais configuré de quoi avoir un Xen qui marche mais ça ne suffit pas car rien n&rsquo;avait été fait pour que les VMs puissent avoir accès au réseau. Il est temps de remédier à cela.
-Tout d&rsquo;abord, une petite description des contraintes:
- Je veux que le routeur/firewall du réseau soit une VMs, pas question que ce soit Hyperion qui soit le routeur.
-  </div>
-  
-    <p><a itemprop="url" href="/post/hyperion-part-3/">Read More&nbsp;&raquo;</a></p>
-  
-  <meta itemprop="inLanguage" content="fr">
-  <meta itemprop="datePublished" content="2016-01-22T13:53:21&#43;02:00">
-  <meta itemprop="dateModified" content="2016-01-22T13:53:21&#43;02:00">
-  
-</article>
+<meta itemprop="keywords" content="administration,big-data,hyperion,admin,bigdata,bridge,debian,hadoop,hardware,linux,network,xen," />
 
-  
-    <article itemscope itemtype="http://schema.org/CreativeWork">
-  <header>
-    <h2 itemprop="name">
-      <a href="/post/hyperion-part-2/">Hyperion, routeur tout-en-un: Round 1 - Xen</a>
-    </h2>
-    
-      <p class="muted"><svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-  <circle cx="16" cy="16" r="14" />
-  <path d="M16 8 L16 16 20 20" />
-</svg>
-<span>7 minute read</span>
-<svg style="margin-bottom: -3px" class="i-edit" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-  <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
-</svg>
-
-  Published: <time datetime="2016-01-18T18:23:54&#43;02:00">18 Jan, 2016</time>
-
-</p>
-    
-  </header>
-  
-    <blockquote itemprop="headline">Montage de la bête, installation 
-du système et mise en place de la virtualisation</blockquote>
-  
-  <div itemprop="description">
-    Je rappelle donc les objectifs définis lors du précédant post: construire un routeur/firewall/serveur de dev/double media center à moindre coûts et avec le maximum de sécurité. Pour ce faire, j&rsquo;ai prévu de faire le plus de récup possible dans mes 3 étagères bourrées de pièces d&rsquo;ordi.
-Mes trouvailles  Une MSI B75MA-E33 avec un Celeron G1610. Avec ça j&rsquo;aurais 1 port SATA 6Gbps, 3 ports SATA 3Gbps (ça suffira amplement vu que l&rsquo;entonnoir ici sera l&rsquo;ethernet), USB3, Ethernet 1Gbps, Intel Graphic HD inclu dans le processeur et un port HDMI (sur les deux nécessaires).
-  </div>
-  
-    <p><a itemprop="url" href="/post/hyperion-part-2/">Read More&nbsp;&raquo;</a></p>
-  
-  <meta itemprop="inLanguage" content="fr">
-  <meta itemprop="datePublished" content="2016-01-18T18:23:54&#43;02:00">
-  <meta itemprop="dateModified" content="2016-01-18T18:23:54&#43;02:00">
-  
-</article>
-
-  
-    <article itemscope itemtype="http://schema.org/CreativeWork">
-  <header>
-    <h2 itemprop="name">
-      <a href="/post/hyperion-part-1/">Hyperion, routeur tout-en-un: Round 0 - Préambule</a>
-    </h2>
-    
+    <header>
+      <h1 itemprop="headline">Hyperion, routeur tout-en-un: Round 0 - Préambule</h1>
       <p class="muted"><svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
   <circle cx="16" cy="16" r="14" />
   <path d="M16 8 L16 16 20 20" />
@@ -357,35 +246,203 @@ Mes trouvailles  Une MSI B75MA-E33 avec un Celeron G1610. Avec ça j&rsquo;aurai
   Published: <time datetime="2016-01-16T09:20:34&#43;02:00">16 Jan, 2016</time>
 
 </p>
+    </header>
     
-  </header>
-  
-    <blockquote itemprop="headline">Création d&#39;un serveur tout-en-un, avec toutes les
+      <blockquote itemprop="description">Création d&#39;un serveur tout-en-un, avec toutes les
 fonctionnalités dont un devOps peut rêver: Introduction</blockquote>
-  
-  <div itemprop="description">
-    L&rsquo;idée c&rsquo;est de nous faire une machine vraiment-tout-en-un à pas trop cher. Ça tombe bien on avait justement une carte mère avec son processeur plutôt pas mal qui traînait à la maison. c&rsquo;est une MSI B75MA-E33 avec un Celeron G1610. Alors OK, les gamers vont me huer ici, mais je rappelle que le but c&rsquo;est de minimiser la consommation en maximisant des fonctionnalités. Et il y a tout ce qu&rsquo;il faut: 1Gbps, USB3, SATA 6Gb/s, HDMI, virtualisation, et même un petit format pour rentrer dans tous les boîtiers.
-  </div>
-  
-    <p><a itemprop="url" href="/post/hyperion-part-1/">Read More&nbsp;&raquo;</a></p>
-  
-  <meta itemprop="inLanguage" content="fr">
-  <meta itemprop="datePublished" content="2016-01-16T09:20:34&#43;02:00">
-  <meta itemprop="dateModified" content="2016-01-16T09:20:34&#43;02:00">
-  
-</article>
+    
+    
+  <details>
+    <summary>Table of Contents</summary>
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#c-koikonveu-ou-cahier-des-charges-pour-les-puristes">C koikonveu ? (ou &ldquo;cahier des charges&rdquo; pour les puristes)</a></li>
+<li><a href="#pourquoi-faire-tout-ça">Pourquoi faire tout ça ?</a>
+<ul>
+<li><a href="#devops-it-s-fun">DevOps, it&rsquo;s FUN !</a></li>
+<li><a href="#marre-des-box-partout">Marre des &ldquo;box&rdquo; partout !</a></li>
+<li><a href="#un-raspberry-pi-c-est-cool-mais-c-est-lent">Un raspberry pi c&rsquo;est cool mais c&rsquo;est lent</a></li>
+</ul></li>
+</ul>
+</nav>
+  </details>
+  <script>
+    const el = document.querySelector('details summary')
+    el.onclick = () => {
+      (function(l,o,a,d,e,r){e=o.createElement(a),r=o.getElementsByTagName(a)[0];e.async=1;e.src=d;r.parentNode.insertBefore(e,r)})(window,document,'script','/js/smoothscroll.js');
+      el.onclick = null
+    }
+    document.querySelectorAll('#TableOfContents a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector(
+          link.href.slice(link.href.indexOf('#'))
+        ).scrollIntoView({ behavior: 'smooth' })
+      })
+    })
+  </script>
 
+
+    <div itemprop="articleBody">
+      
+
+<p>L&rsquo;idée c&rsquo;est de nous faire une machine <strong>vraiment-tout-en-un</strong> à pas trop
+cher. Ça tombe bien on avait justement une carte mère avec son processeur plutôt
+pas mal qui traînait à la maison. c&rsquo;est
+une <a href="https://www.msi.com/Motherboard/B75MA-E33.html" target="_blank">MSI B75MA-E33</a> avec
+un
+<a href="http://ark.intel.com/products/71072/Intel-Celeron-Processor-G1610-2M-Cache-2_60-GHz" target="_blank">Celeron G1610</a>.
+Alors OK, les gamers vont me huer ici, mais je rappelle que le but c&rsquo;est de
+minimiser la consommation en maximisant des fonctionnalités. Et il y a tout ce
+qu&rsquo;il faut: <strong>1Gbps</strong>, <strong>USB3</strong>, <strong>SATA 6Gb/s</strong>, <strong>HDMI</strong>, <strong>virtualisation</strong>,
+et même un petit format pour rentrer dans tous les boîtiers.</p>
+
+<h1 id="c-koikonveu-ou-cahier-des-charges-pour-les-puristes">C koikonveu ? (ou &ldquo;cahier des charges&rdquo; pour les puristes)</h1>
+
+<p>Voilà ce que nous voulons avoir comme service basiques:</p>
+
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/Routeur" target="_blank">Routeur</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Pare-feu_(informatique)" target="_blank">Firewall</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Domain_Name_System" target="_blank">DNS</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol" target="_blank">DHCP</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Point_d%27acc%C3%A8s_sans_fil" target="_blank">Access Point Wifi</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/IPv6" target="_blank">IPv6</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/R%C3%A9seau_priv%C3%A9_virtuel" target="_blank">VPN</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Qualit%C3%A9_de_service" target="_blank">QoS</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Virtualisation" target="_blank">Virtualisation</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Serveur_de_stockage_en_r%C3%A9seau" target="_blank">NAS</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Proxy" target="_blank">Proxy</a> apt-get pour nos machines
+sous <a href="http://www.debian.org" target="_blank">Debian</a></li>
+<li>Proxy pacman pour nos machines sous <a href="https://www.archlinux.org/" target="_blank">Arch Linux</a></li>
+<li>Et la cerise sur le gâteau, faire tourner deux <a href="https://kodi.tv/" target="_blank">Kodi</a>
+indépendants, un sur chacune de nos télé grâce
+au <a href="https://en.wikipedia.org/wiki/Multiseat_configuration" target="_blank">multiseat</a></li>
+<li>Le tout avec le plus de sécurité possible</li>
+</ul>
+
+<p>Bien-sûr à cela s&rsquo;ajouteront les service futures. Je ferai un post descriptif à
+chaque fois, du moins lorsque cela en vaut la peine 😉.</p>
+
+<p>Pour les impatients, mordus de ligne de commande et assoiffés du tourne vis, vous
+pouvez tout de suite passer à la <a href="/post/hyperion-part-2">suite</a> si vous le souhaitez.</p>
+
+<h1 id="pourquoi-faire-tout-ça">Pourquoi faire tout ça ?</h1>
+
+<h2 id="devops-it-s-fun">DevOps, it&rsquo;s FUN !</h2>
+
+<p>Je sais pas vous, mais moi j&rsquo;adore administrer des réseaux et des systèmes sous
+<strong>GNU/linux</strong>, ou sous <strong>BSD</strong> d&rsquo;ailleurs, c&rsquo;est juste que j&rsquo;y suis moins
+habitué. Quoi de mieux pour s&rsquo;amuser dans ce cas qu&rsquo;une petite installation de
+machines virtualisées ?</p>
+
+<h2 id="marre-des-box-partout">Marre des &ldquo;box&rdquo; partout !</h2>
+
+<p>On est tous un peu dans le même cas je pense, dès que l&rsquo;on commence a s&rsquo;équiper
+en matériel internet ou multimédia, on a tous des &ldquo;box&rdquo; de tout genre, une pour
+internet, une pour la wifi, une pour chaque télé, une pour le NAS, etc&hellip;</p>
+
+<p>Évidement, chacune de ces &ldquo;box&rdquo; ou presque tourne avec un firmware propriétaire
+différent, sur lequel on a aucun contrôle, dont les fonctionnalités, pour un
+utilisateur chevronné, laissent réellement à désirer.</p>
+
+<p>Et puis bon, ça fini par s&rsquo;accumuler niveau consommation électrique, 10W par ci,
+5W par là, avec des alimentations que ne sont même pas a <a href="https://fr.wikipedia.org/wiki/Alimentation_%C3%A0_d%C3%A9coupage" target="_blank">découpage</a> la
+plupart du temps, donc l&rsquo;alimentation consomme autant lorsque l&rsquo;appareil est en
+&ldquo;idle&rdquo; que lorsqu&rsquo;il est en pleine utilisation. Heureusement, ces dernières
+années, ce dernier point s&rsquo;est largement amélioré.</p>
+
+<p>Exemple: la &ldquo;box&rdquo; ADSL:</p>
+
+<ul>
+<li>Pas de <a href="https://fr.wikipedia.org/wiki/Qualit%C3%A9_de_service" target="_blank">QoS</a>.
+Résultat: si Monsieur télécharge la dernière
+ISO <a href="http://www.debian.org" target="_blank">Debian</a> en regardant des vidéos sur Youtube pour
+passer le temps, aucune chance pour que Madame puisse jouer a un de ses jeux
+favoris en ligne sans subir des ralentissements.</li>
+<li>Les ports sont en 100Mbps&hellip; sérieusement ? Résultat: Obligé de rajouter un
+switch 1Gbps en aval. Hop ! Une autre &ldquo;box&rdquo;.</li>
+<li>La configurabilité est souvent restreinte, change d&rsquo;un modèle à l&rsquo;autre,
+d&rsquo;une mise à jour à l&rsquo;autre, et même parfois, les paramètres sont remis par
+défaut lors d&rsquo;une de ces mise à jour, du coup, plus d&rsquo;internet&hellip; Ça a le
+dont de m&rsquo;énerver quand ça arrive le matin alors que je n&rsquo;ai pas encore bu
+mon café et que je m&rsquo;installe devant ma machine, près a gravir des montagnes
+de code.
+<br /></li>
+</ul>
+
+<h2 id="un-raspberry-pi-c-est-cool-mais-c-est-lent">Un raspberry pi c&rsquo;est cool mais c&rsquo;est lent</h2>
+
+<p>Personnellement, aller fouiller dans une étagère de DVD, ça me saoule, et en
+plus ça prend de la place. Je préfère nettement un bon
+vieux <a href="https://kodi.tv/" target="_blank">Kodi</a> (anciennement nommé XBMC).</p>
+
+<p>Donc, c&rsquo;est quoi l&rsquo;idée logique pour moi ? Acheter
+un <a href="https://www.raspberrypi.org/" target="_blank">raspberry pi</a> et y installer Kodi, ce que j&rsquo;ai
+fait. Malheureusement, certains formats vidéos sont mal supportés (pas de
+décodage hardware pour certains) et l&rsquo;interface graphique est vraiment lente.</p>
+
+<p>Ensuite j&rsquo;ai tenté avec
+un <a href="http://ark.intel.com/products/78577/Intel-NUC-Kit-DE3815TYKHE" target="_blank">Intel NUC</a>,
+je me suis dit: &ldquo;Ça au moins c&rsquo;est un vrai PC en miniature&rdquo;. Mais bon voilà,
+croyez moi ou pas, le petit processeur Atom de la bête n&rsquo;arrivais pas à décoder
+le x264 au delà de 576p (c&rsquo;était déjà tout juste a 576p en fait). En gros, même
+soucis qu&rsquo;avec le raspberry pi mais plus cher 😲. Par contre l&rsquo;UI était
+super fluide 😄.</p>
+
+<p>Et puis bon, ça nous fait encore des &ldquo;box&rdquo; supplémentaires dans notre
+installation.</p>
+
+<p>EDIT: Depuis, ils ont sorti le
+<a href="https://www.raspberrypi.org/products/raspberry-pi-3-model-b/" target="_blank">raspberry pi 3</a>,
+il faut que je teste ça.</p>
+
+    </div>
+    
+    <footer>
+      <hr>
+      <p>
+  Published
   
+    
+      by <span itemprop="author">Xakz</span>
+    
+  
+  <time datetime="2016-01-16T09:20:34&#43;02:00">
+    16 Jan, 2016
+  </time>
+  
+    in <span itemprop="articleSection"><a href="/categories/administration/">Administration</a> and <a href="/categories/hyperion/">Hyperion</a></span>
+  
+  
+    and tagged <a href="/tags/admin/">admin</a>, <a href="/tags/hardware/">hardware</a>, <a href="/tags/linux/">linux</a>, <a href="/tags/network/">network</a> and <a href="/tags/xen/">xen</a>
+  
+  using <span itemprop="wordCount">708</span> words.
+</p>
+
+      
+  
+
+
+
+  <aside>
+    <header>Related Content</header>
+    <ul>
+      
+      
+        <li><a href="/post/hadoop-dev-server/">Installer un pseudo-cluster Hadoop</a> &ndash; 5 minutes
+      
+        <li><a href="/post/hyperion-part-3/">Hyperion, routeur tout-en-un: Round 2 - Le réseau</a> &ndash; 11 minutes
+      
+        <li><a href="/post/hyperion-part-2/">Hyperion, routeur tout-en-un: Round 1 - Xen</a> &ndash; 7 minutes
+      
+    </ul>
+  </aside>
+
+
+    </footer>
+  </article>
 </main>
     <footer>
-  <nav>
-  <p>
-    
-    <span>Page 1 of 1</span>
-    
-  </p>
-</nav>
-
   
   <p class="muted">
     This page was generated using

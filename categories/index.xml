@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Xakz&#39;s</title>
+    <link>http://xakz.github.io/categories/</link>
+    <description>Recent content in Categories on Xakz&#39;s</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language>
+    <lastBuildDate>Fri, 22 Jan 2016 13:53:21 +0200</lastBuildDate>
+    
+	<atom:link href="http://xakz.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Administration</title>
+      <link>http://xakz.github.io/categories/administration/</link>
+      <pubDate>Fri, 22 Jan 2016 13:53:21 +0200</pubDate>
+      
+      <guid>http://xakz.github.io/categories/administration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Big Data</title>
+      <link>http://xakz.github.io/categories/big-data/</link>
+      <pubDate>Sun, 23 Apr 2017 11:31:51 +0200</pubDate>
+      
+      <guid>http://xakz.github.io/categories/big-data/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hyperion</title>
+      <link>http://xakz.github.io/categories/hyperion/</link>
+      <pubDate>Fri, 22 Jan 2016 13:53:21 +0200</pubDate>
+      
+      <guid>http://xakz.github.io/categories/hyperion/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
