@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bridge on Xakz&#39;s</title>
+    <link>http://xakz.github.io/tags/bridge/</link>
+    <description>Recent content in Bridge on Xakz&#39;s</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language>
+    <lastBuildDate>Fri, 22 Jan 2016 13:53:21 +0200</lastBuildDate>
+    
+	<atom:link href="http://xakz.github.io/tags/bridge/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hyperion, routeur tout-en-un: Round 2 - Le réseau</title>
+      <link>http://xakz.github.io/post/hyperion-part-3/</link>
+      <pubDate>Fri, 22 Jan 2016 13:53:21 +0200</pubDate>
+      
+      <guid>http://xakz.github.io/post/hyperion-part-3/</guid>
+      <description>Haaaaa le réseau :&amp;lsquo;-) J&amp;rsquo;adore ça !
+Au précédant post j&amp;rsquo;avais configuré de quoi avoir un Xen qui marche mais ça ne suffit pas car rien n&amp;rsquo;avait été fait pour que les VMs puissent avoir accès au réseau. Il est temps de remédier à cela.
+Tout d&amp;rsquo;abord, une petite description des contraintes:
+ Je veux que le routeur/firewall du réseau soit une VMs, pas question que ce soit Hyperion qui soit le routeur.</description>
+    </item>
+    
+  </channel>
+</rss>

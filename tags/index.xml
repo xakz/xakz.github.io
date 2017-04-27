@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Xakz&#39;s</title>
+    <link>http://xakz.github.io/tags/</link>
+    <description>Recent content in Tags on Xakz&#39;s</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language>
+    <lastBuildDate>Sun, 23 Apr 2017 11:31:51 +0200</lastBuildDate>
+    
+	<atom:link href="http://xakz.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Admin</title>
+      <link>http://xakz.github.io/tags/admin/</link>
+      <pubDate>Sun, 23 Apr 2017 11:31:51 +0200</pubDate>
+      
+      <guid>http://xakz.github.io/tags/admin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bigdata</title>
+      <link>http://xakz.github.io/tags/bigdata/</link>
+      <pubDate>Sun, 23 Apr 2017 11:31:51 +0200</pubDate>
+      
+      <guid>http://xakz.github.io/tags/bigdata/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bridge</title>
+      <link>http://xakz.github.io/tags/bridge/</link>
+      <pubDate>Fri, 22 Jan 2016 13:53:21 +0200</pubDate>
+      
+      <guid>http://xakz.github.io/tags/bridge/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Debian</title>
+      <link>http://xakz.github.io/tags/debian/</link>
+      <pubDate>Sun, 23 Apr 2017 11:31:51 +0200</pubDate>
+      
+      <guid>http://xakz.github.io/tags/debian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hadoop</title>
+      <link>http://xakz.github.io/tags/hadoop/</link>
+      <pubDate>Sun, 23 Apr 2017 11:31:51 +0200</pubDate>
+      
+      <guid>http://xakz.github.io/tags/hadoop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hardware</title>
+      <link>http://xakz.github.io/tags/hardware/</link>
+      <pubDate>Mon, 18 Jan 2016 18:23:54 +0200</pubDate>
+      
+      <guid>http://xakz.github.io/tags/hardware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>http://xakz.github.io/tags/linux/</link>
+      <pubDate>Sun, 23 Apr 2017 11:31:51 +0200</pubDate>
+      
+      <guid>http://xakz.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network</title>
+      <link>http://xakz.github.io/tags/network/</link>
+      <pubDate>Fri, 22 Jan 2016 13:53:21 +0200</pubDate>
+      
+      <guid>http://xakz.github.io/tags/network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Xen</title>
+      <link>http://xakz.github.io/tags/xen/</link>
+      <pubDate>Fri, 22 Jan 2016 13:53:21 +0200</pubDate>
+      
+      <guid>http://xakz.github.io/tags/xen/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

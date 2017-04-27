@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Xakz&#39;s</title>
+    <link>http://xakz.github.io/tags/linux/</link>
+    <description>Recent content in Linux on Xakz&#39;s</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language>
+    <lastBuildDate>Sun, 23 Apr 2017 11:31:51 +0200</lastBuildDate>
+    
+	<atom:link href="http://xakz.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Installer un pseudo-cluster Hadoop</title>
+      <link>http://xakz.github.io/post/hadoop-dev-server/</link>
+      <pubDate>Sun, 23 Apr 2017 11:31:51 +0200</pubDate>
+      
+      <guid>http://xakz.github.io/post/hadoop-dev-server/</guid>
+      <description>Alors bien sûr, il y a les VMs Cloudera mais elles nécessitent pas mal de RAM et, avec leur propre Cloudera Manager, nous éloignent des outils basiques de chez Apache. Même si ils font apparemment du bon boulot, après tout, leur but, c&amp;rsquo;est de faire un peu de pub et de vendre du support.
+On va plutôt partir ici sur une Debian 8 comme base et détailler les étapes pour avoir son petit pseudo-cluster Hadoop de dev.</description>
+    </item>
+    
+    <item>
+      <title>Hyperion, routeur tout-en-un: Round 2 - Le réseau</title>
+      <link>http://xakz.github.io/post/hyperion-part-3/</link>
+      <pubDate>Fri, 22 Jan 2016 13:53:21 +0200</pubDate>
+      
+      <guid>http://xakz.github.io/post/hyperion-part-3/</guid>
+      <description>Haaaaa le réseau :&amp;lsquo;-) J&amp;rsquo;adore ça !
+Au précédant post j&amp;rsquo;avais configuré de quoi avoir un Xen qui marche mais ça ne suffit pas car rien n&amp;rsquo;avait été fait pour que les VMs puissent avoir accès au réseau. Il est temps de remédier à cela.
+Tout d&amp;rsquo;abord, une petite description des contraintes:
+ Je veux que le routeur/firewall du réseau soit une VMs, pas question que ce soit Hyperion qui soit le routeur.</description>
+    </item>
+    
+    <item>
+      <title>Hyperion, routeur tout-en-un: Round 1 - Xen</title>
+      <link>http://xakz.github.io/post/hyperion-part-2/</link>
+      <pubDate>Mon, 18 Jan 2016 18:23:54 +0200</pubDate>
+      
+      <guid>http://xakz.github.io/post/hyperion-part-2/</guid>
+      <description>Je rappelle donc les objectifs définis lors du précédant post: construire un routeur/firewall/serveur de dev/double media center à moindre coûts et avec le maximum de sécurité. Pour ce faire, j&amp;rsquo;ai prévu de faire le plus de récup possible dans mes 3 étagères bourrées de pièces d&amp;rsquo;ordi.
+Mes trouvailles  Une MSI B75MA-E33 avec un Celeron G1610. Avec ça j&amp;rsquo;aurais 1 port SATA 6Gbps, 3 ports SATA 3Gbps (ça suffira amplement vu que l&amp;rsquo;entonnoir ici sera l&amp;rsquo;ethernet), USB3, Ethernet 1Gbps, Intel Graphic HD inclu dans le processeur et un port HDMI (sur les deux nécessaires).</description>
+    </item>
+    
+    <item>
+      <title>Hyperion, routeur tout-en-un: Round 0 - Préambule</title>
+      <link>http://xakz.github.io/post/hyperion-part-1/</link>
+      <pubDate>Sat, 16 Jan 2016 09:20:34 +0200</pubDate>
+      
+      <guid>http://xakz.github.io/post/hyperion-part-1/</guid>
+      <description>L&amp;rsquo;idée c&amp;rsquo;est de nous faire une machine vraiment-tout-en-un à pas trop cher. Ça tombe bien on avait justement une carte mère avec son processeur plutôt pas mal qui traînait à la maison. c&amp;rsquo;est une MSI B75MA-E33 avec un Celeron G1610. Alors OK, les gamers vont me huer ici, mais je rappelle que le but c&amp;rsquo;est de minimiser la consommation en maximisant des fonctionnalités. Et il y a tout ce qu&amp;rsquo;il faut: 1Gbps, USB3, SATA 6Gb/s, HDMI, virtualisation, et même un petit format pour rentrer dans tous les boîtiers.</description>
+    </item>
+    
+  </channel>
+</rss>
