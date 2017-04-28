@@ -228,7 +228,7 @@ du système et mise en place de la virtualisation">
 
 
 <meta itemprop="dateModified" content="2016-01-18T18:23:54&#43;02:00" />
-<meta itemprop="wordCount" content="1373">
+<meta itemprop="wordCount" content="1804">
 
 
 
@@ -240,7 +240,7 @@ du système et mise en place de la virtualisation">
   <circle cx="16" cy="16" r="14" />
   <path d="M16 8 L16 16 20 20" />
 </svg>
-<span>7 minute read</span>
+<span>9 minute read</span>
 <svg style="margin-bottom: -3px" class="i-edit" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
   <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
 </svg>
@@ -262,6 +262,12 @@ du système et mise en place de la virtualisation</blockquote>
 <li><a href="#photos">Photos</a></li>
 <li><a href="#installation-du-système-de-base">Installation du système de base</a></li>
 <li><a href="#installation-de-xen">Installation de Xen</a></li>
+<li><a href="#lvm">LVM</a>
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#partitionnement">Partitionnement</a></li>
+<li><a href="#création-du-vg">Création du VG</a></li>
+</ul></li>
 <li><a href="#la-suite">La suite</a></li>
 </ul>
 </nav>
@@ -530,6 +536,85 @@ pouvez faire <code>free</code> et vérifier que la mémoire disponible est bien 
 <p>Dans les outils de monitoring Xen, on trouve <code>xentop</code>, c&rsquo;est comme <code>top</code> mais
 pour les VMs.</p>
 
+<h1 id="lvm">LVM</h1>
+
+<p>On a pas parlé du lieu où serait stocké les images disque des VMs. Pour ça il
+existe <a href="https://wiki.xen.org/wiki/Storage_options" target="_blank">plusieurs solutions</a> avec Xen. On peut utiliser des fichiers
+basiques comme on le ferait avec VirtualBox (.raw, .qcow2 ou .vhd supporté), des
+stockages distants comme <a href="https://en.wikipedia.org/wiki/Network_File_System" target="_blank">NFS</a> et <a href="https://en.wikipedia.org/wiki/ISCSI" target="_blank">iSCSI</a>, ou <a href="https://en.wikipedia.org/wiki/Logical_volume_management" target="_blank">LVM</a>, c&rsquo;est ce dernier que
+nous utiliserons. Les stockages distants vont être particulièrement utiles en
+cas de datacenter de virtualisation. Ils permettent
+la <a href="https://wiki.xenproject.org/wiki/Migration" target="_blank">live migration</a> des VMs de serveur en serveur.</p>
+
+<p>Petite explication sur la terminologie LVM:</p>
+
+<dl>
+<dt>PV</dt>
+<dd>Physical Volume, Il s&rsquo;agit tout simplement d&rsquo;une partition avec le type <code>0x8E</code>
+et une entête spécifique à LVM pour que le système le reconnaisse.</dd>
+<dt>VG</dt>
+<dd>Volume Group, Il s&rsquo;agit d&rsquo;un groupe de <code>PVs</code> utilisable pour créer des
+<code>LV</code>. Comme on peut le deviner, un <code>VG</code> peut s&rsquo;étendre sur plusieurs disques, un
+peu comme le fait le <code>RAID 0</code>.</dd>
+<dt>LV</dt>
+<dd>Logical Volume, c&rsquo;est une partition utilisable par <code>mkfs</code>, comme le serait
+<code>/dev/sda1</code>. Elle utilise tout ou une fraction du <code>VG</code> auquel elle appartient.</dd>
+</dl>
+
+<h2 id="installation">Installation</h2>
+
+<p>Rien de plus simple:</p>
+
+<pre><code class="language-sh">apt-get install lvm2
+</code></pre>
+
+<h2 id="partitionnement">Partitionnement</h2>
+
+<p>J&rsquo;ai choisi de créer un <code>VG</code> utilisant un unique <code>PV</code> situé sur une partition
+qui prendra tout le disque de 500G.</p>
+
+<p>Personnellement, j&rsquo;aime utiliser <code>cfdisk</code> ou parfois <code>fdisk</code>, à vous de voir
+lequel vous préférez. Pensez bien à mettre le type <code>8E</code>, ce n&rsquo;est pas
+indispensable car LVM scan les partitions au boot peu importe leur type mais un
+peu de &ldquo;good practice&rdquo;, ça fait pas de mal.</p>
+
+<h2 id="création-du-vg">Création du VG</h2>
+
+<p>Franchement, les commandes LVM sont très agréables à utiliser, simple et propre
+avec des pages de man claires. C&rsquo;est pas toujours comme ça malheureusement.</p>
+
+<p>Alors, c&rsquo;est super simple:</p>
+
+<pre><code class="language-sh">vgcreate vg0 /dev/sdc1
+</code></pre>
+
+<p>Et c&rsquo;est tout xD</p>
+
+<p><code>vgcreate</code> va de lui même appeler <code>pvcreate</code> pour initialiser la partition et en
+faire un <code>PV</code>, et ensuite l&rsquo;ajouter au nouveau <code>VG</code> nommé <code>vg0</code>.</p>
+
+<p>On peut regarder l&rsquo;état des <code>PVs</code>, <code>VGs</code> et <code>LVs</code> avec <code>pvs</code>, <code>vgs</code> et <code>lvs</code>:</p>
+
+<pre><code class="language-sh">14:39 root@hyperion /etc/xen # pvs        
+  PV         VG   Fmt  Attr PSize   PFree  
+  /dev/sdc1  vg0  lvm2 a--  465.76g 445.51g
+14:39 root@hyperion /etc/xen # vgs
+  VG   #PV #LV #SN Attr   VSize   VFree  
+  vg0    1   6   0 wz--n- 465.76g 445.51g
+14:39 root@hyperion /etc/xen # lvs
+  LV          VG   Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  hadoop-disk vg0  -wi-ao----  10.00g                                                    
+  hadoop-swap vg0  -wi-ao----   4.00g                                                    
+  io-disk     vg0  -wi-a-----   4.00g                                                    
+  io-swap     vg0  -wi-a----- 128.00m                                                    
+  tethys-disk vg0  -wi-ao----   2.00g                                                    
+  tethys-swap vg0  -wi-ao---- 128.00m
+</code></pre>
+
+<p>Vous pouvez voir que j&rsquo;ai déjà quelques <code>LVs</code>. Dans tout les cas, je vous
+suggère d&rsquo;aller lire d&rsquo;avantage sur LVM, par exemple <a href="https://wiki.archlinux.org/index.php/LVM" target="_blank">ici</a>. Je ferai
+peut-être un post complet dessus un jour ;-)</p>
+
 <h1 id="la-suite">La suite</h1>
 
 <p>Au <a href="/post/hyperion-part-3/">prochain post</a>, on s&rsquo;occupera du réseau. Il va falloir tout un post
@@ -558,7 +643,7 @@ pas de trop.</p>
   
     and tagged <a href="/tags/admin/">admin</a>, <a href="/tags/hardware/">hardware</a>, <a href="/tags/linux/">linux</a>, <a href="/tags/network/">network</a> and <a href="/tags/xen/">xen</a>
   
-  using <span itemprop="wordCount">1373</span> words.
+  using <span itemprop="wordCount">1804</span> words.
 </p>
 
       
