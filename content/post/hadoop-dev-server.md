@@ -255,7 +255,7 @@ Hadoop.
 [next]: /post/install-hbase/
 
 # Sources
-http://hadoop.apache.org/
-https://bigtop.apache.org/index.html
-https://cwiki.apache.org/confluence/display/BIGTOP/How+to+install+Hadoop+distribution+from+Bigtop+0.5.0
-https://developer.yahoo.com/hadoop/tutorial/
+* http://hadoop.apache.org/
+* https://bigtop.apache.org/index.html
+* https://cwiki.apache.org/confluence/display/BIGTOP/How+to+install+Hadoop+distribution+from+Bigtop+0.5.0
+* https://developer.yahoo.com/hadoop/tutorial/
