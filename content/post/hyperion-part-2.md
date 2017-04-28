@@ -251,6 +251,92 @@ pouvez faire `free` et vérifier que la mémoire disponible est bien de 1.5G.
 Dans les outils de monitoring Xen, on trouve `xentop`, c'est comme `top` mais
 pour les VMs.
 
+# LVM
+On a pas parlé du lieu où serait stocké les images disque des VMs. Pour ça il
+existe [plusieurs solutions][storage] avec Xen. On peut utiliser des fichiers
+basiques comme on le ferait avec VirtualBox (.raw, .qcow2 ou .vhd supporté), des
+stockages distants comme [NFS][] et [iSCSI][], ou [LVM][], c'est ce dernier que
+nous utiliserons. Les stockages distants vont être particulièrement utiles en
+cas de datacenter de virtualisation. Ils permettent
+la [live migration][migration] des VMs de serveur en serveur.
+
+[storage]: https://wiki.xen.org/wiki/Storage_options
+[nfs]: https://en.wikipedia.org/wiki/Network_File_System
+[iscsi]: https://en.wikipedia.org/wiki/ISCSI
+[lvm]: https://en.wikipedia.org/wiki/Logical_volume_management
+[migration]: https://wiki.xenproject.org/wiki/Migration
+
+Petite explication sur la terminologie LVM:
+
+PV
+: Physical Volume, Il s'agit tout simplement d'une partition avec le type `0x8E`
+et une entête spécifique à LVM pour que le système le reconnaisse.
+
+VG
+: Volume Group, Il s'agit d'un groupe de `PVs` utilisable pour créer des
+`LV`. Comme on peut le deviner, un `VG` peut s'étendre sur plusieurs disques, un
+peu comme le fait le `RAID 0`.
+
+LV
+: Logical Volume, c'est une partition utilisable par `mkfs`, comme le serait
+`/dev/sda1`. Elle utilise tout ou une fraction du `VG` auquel elle appartient.
+
+## Installation
+Rien de plus simple:
+
+```sh
+apt-get install lvm2
+```
+
+## Partitionnement
+J'ai choisi de créer un `VG` utilisant un unique `PV` situé sur une partition
+qui prendra tout le disque de 500G.
+
+Personnellement, j'aime utiliser `cfdisk` ou parfois `fdisk`, à vous de voir
+lequel vous préférez. Pensez bien à mettre le type `8E`, ce n'est pas
+indispensable car LVM scan les partitions au boot peu importe leur type mais un
+peu de "good practice", ça fait pas de mal.
+
+## Création du VG
+Franchement, les commandes LVM sont très agréables à utiliser, simple et propre
+avec des pages de man claires. C'est pas toujours comme ça malheureusement.
+
+Alors, c'est super simple:
+
+```sh
+vgcreate vg0 /dev/sdc1
+```
+
+Et c'est tout xD
+
+`vgcreate` va de lui même appeler `pvcreate` pour initialiser la partition et en
+faire un `PV`, et ensuite l'ajouter au nouveau `VG` nommé `vg0`.
+
+On peut regarder l'état des `PVs`, `VGs` et `LVs` avec `pvs`, `vgs` et `lvs`:
+
+```sh
+14:39 root@hyperion /etc/xen # pvs        
+  PV         VG   Fmt  Attr PSize   PFree  
+  /dev/sdc1  vg0  lvm2 a--  465.76g 445.51g
+14:39 root@hyperion /etc/xen # vgs
+  VG   #PV #LV #SN Attr   VSize   VFree  
+  vg0    1   6   0 wz--n- 465.76g 445.51g
+14:39 root@hyperion /etc/xen # lvs
+  LV          VG   Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  hadoop-disk vg0  -wi-ao----  10.00g                                                    
+  hadoop-swap vg0  -wi-ao----   4.00g                                                    
+  io-disk     vg0  -wi-a-----   4.00g                                                    
+  io-swap     vg0  -wi-a----- 128.00m                                                    
+  tethys-disk vg0  -wi-ao----   2.00g                                                    
+  tethys-swap vg0  -wi-ao---- 128.00m
+```
+
+Vous pouvez voir que j'ai déjà quelques `LVs`. Dans tout les cas, je vous
+suggère d'aller lire d'avantage sur LVM, par exemple [ici][lvmdoc]. Je ferai
+peut-être un post complet dessus un jour ;-)
+
+[lvmdoc]: https://wiki.archlinux.org/index.php/LVM
+
 # La suite
 Au [prochain post][next], on s'occupera du réseau. Il va falloir tout un post
 pour ça vu la complexité. Je vous rassure, de base, avec Xen c'est très simple,
