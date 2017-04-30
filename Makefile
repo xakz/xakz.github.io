@@ -2,6 +2,8 @@
 GENERATE	= hugo
 SERVE		= hugo server --buildDrafts
 OUTPUT_DIR	= public
+
+REMOTE		= origin
 SOURCE_BRANCH	= source
 PUBLISH_BRANCH	= master
 
@@ -19,7 +21,8 @@ submodule-stamp:
 
 output-stamp:
 	mkdir -p $(OUTPUT_DIR)
-	git worktree add $(OUTPUT_DIR) master
+	git branch --track $(PUBLISH_BRANCH) $(REMOTE)/$(PUBLISH_BRANCH) || true
+	git worktree add $(OUTPUT_DIR) $(PUBLISH_BRANCH)
 	touch $@
 
 .PHONY: prepare
@@ -52,7 +55,7 @@ publish: generate		## Publishes the website to github page
 		exit 0;									\
 	else										\
 		git add . && git commit -m "New publishing the $$(date)" &&		\
-		git push origin master ||						\
+		git push ||								\
 		{ printf "\033[1;91m/!\\ Something is wrong /!\\\033[0m\n";exit 8;};	\
 	fi;										\
 	printf "\033[1;92m= Publishing done =\033[0m\n";				\
