@@ -17,7 +17,7 @@ SectionPagesMenu = "main"
 #pygmentsUseClasses = false
 
 # build settings
-publishDir = "../master/"
+publishDir = "public"
 verbose = true
 
 # i18n
@@ -64,4 +64,3 @@ defaultContentLanguageInSubdir = false
   weight = 4
   identifier = "tag"
   url = "/tags/"
-  
