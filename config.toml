@@ -28,6 +28,7 @@ defaultContentLanguageInSubdir = false
 # markdown processor
 [blackfriday]
   hrefTargetBlank = true
+  smartypants = false
 
 [params]
   description = "some description"
