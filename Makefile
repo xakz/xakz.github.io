@@ -20,7 +20,6 @@ submodule-stamp:
 	touch $@
 
 output-stamp:
-	mkdir -p $(OUTPUT_DIR)
 	git branch --track $(PUBLISH_BRANCH) $(REMOTE)/$(PUBLISH_BRANCH) || true
 	git worktree add $(OUTPUT_DIR) $(PUBLISH_BRANCH)
 	touch $@
