@@ -9,7 +9,6 @@ categories = ["Coding"]
 tags = ["hugo", "makefile", "git", "github-pages"]
 toc = true
 +++
-<!--more-->
 Alors, pour les nostalgiques !
 
 {{< youtube VvqwCme7fKM >}}
@@ -18,6 +17,8 @@ En revoyant ça, je me suis dit "OMG yavait déjà de la 3D !". En même temps,
 c'était aussi l'époque de la Playstation 1...
 
 Bon, c'est pas pour ça qu'on est là ! On est des gens sérieux nous !
+
+<!--more-->
 
 # github.io
 Pour ceux qui connaissent pas, github offre gratuitement un service permettant
