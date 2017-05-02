@@ -25,6 +25,8 @@ de récup possible dans mes 3 étagères bourrées de pièces d'ordi.
    ici sera l'ethernet), USB3, Ethernet 1Gbps, Intel Graphic HD inclu dans le
    processeur et un port HDMI (sur les deux nécessaires).
    
+<!--more-->
+
  * Une barrette DDR3 de 4GB. Ça sera déjà un bon début (la virtualisation, ça a
    besoin de RAM :wink:), on verra pour d'éventuels ajouts plus tard.
 

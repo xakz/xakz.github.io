@@ -27,7 +27,9 @@ Tout d'abord, une petite description des contraintes:
   raisons pratiques, j'y mettrai aussi le cache DNS et le serveur DHCP. Je
   pourrais faire des VMs séparées pour ces deux derniers mais bon, faut pas
   exagérer, c'est pas la NSA non plus.
-  
+
+<!--more-->
+
 * La carte mère ne possédant pas de IOMMU, je ne peux pas faire de PCI
   passthrough avec Xen. Donc les cartes réseau physiques d'Hyperion devront être
   gérée partiellement par Hyperion. Ce n'est pas trop un soucis, j'utiliserai

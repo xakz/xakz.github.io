@@ -33,6 +33,9 @@ Voilà ce que nous voulons avoir comme service basiques:
  * [DHCP](https://fr.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol)
  * [Access Point Wifi](https://fr.wikipedia.org/wiki/Point_d%27acc%C3%A8s_sans_fil)
  * [IPv6](https://fr.wikipedia.org/wiki/IPv6)
+
+<!--more-->
+
  * [VPN](https://fr.wikipedia.org/wiki/R%C3%A9seau_priv%C3%A9_virtuel)
  * [QoS](https://fr.wikipedia.org/wiki/Qualit%C3%A9_de_service)
  * [Virtualisation](https://fr.wikipedia.org/wiki/Virtualisation)

@@ -19,6 +19,8 @@ avoir son petit pseudo-cluster [Hadoop][] de dev.
 [cloudera]: https://www.cloudera.com/downloads/quickstart_vms.html
 [hadoop]: https://hadoop.apache.org/
 
+<!--more-->
+
 # Hardware et partitionnement
 On a à la maison la machine idéale pour ce genre de chose: [Hyperion][].
 
