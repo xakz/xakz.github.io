@@ -287,9 +287,7 @@ figure:hover:before { opacity: 0; }
 
 
     <div itemprop="articleBody">
-      
-
-<p>Haaaaa le réseau :'-) J'adore ça !</p>
+      <p>Haaaaa le réseau :'-) J'adore ça !</p>
 
 <p>Au <a href="/post/hyperion-part-2/">précédant post</a> j'avais configuré de quoi avoir un Xen qui marche mais
 ça ne suffit pas car rien n'avait été fait pour que les VMs puissent avoir accès
@@ -298,13 +296,17 @@ au réseau. Il est temps de remédier à cela.</p>
 <p>Tout d'abord, une petite description des contraintes:</p>
 
 <ul>
-<li><p>Je veux que le routeur/firewall du réseau soit une VMs, pas question que ce
+<li>Je veux que le routeur/firewall du réseau soit une VMs, pas question que ce
 soit Hyperion qui soit le routeur. Cela augmentera sensiblement la
 sécurité. Il ne s'occupera que de router et filtrer les paquets. Pour des
 raisons pratiques, j'y mettrai aussi le cache DNS et le serveur DHCP. Je
 pourrais faire des VMs séparées pour ces deux derniers mais bon, faut pas
-exagérer, c'est pas la NSA non plus.</p></li>
+exagérer, c'est pas la NSA non plus.</li>
+</ul>
 
+<p></p>
+
+<ul>
 <li><p>La carte mère ne possédant pas de IOMMU, je ne peux pas faire de PCI
 passthrough avec Xen. Donc les cartes réseau physiques d'Hyperion devront être
 gérée partiellement par Hyperion. Ce n'est pas trop un soucis, j'utiliserai
@@ -686,7 +688,6 @@ cette VM destinée au routage.</p>
 </ul>
 
 <p>Et bien sûr les pages de man et les manuels des différents programmes.</p>
-
     </div>
     
     <footer>

@@ -245,10 +245,24 @@ figure:hover:before { opacity: 0; }
 </blockquote>
   
   <div itemprop="description">
-    Haaaaa le réseau :'-) J'adore ça !
-Au précédant post j'avais configuré de quoi avoir un Xen qui marche mais ça ne suffit pas car rien n'avait été fait pour que les VMs puissent avoir accès au réseau. Il est temps de remédier à cela.
-Tout d'abord, une petite description des contraintes:
- Je veux que le routeur/firewall du réseau soit une VMs, pas question que ce soit Hyperion qui soit le routeur.
+    <p>Haaaaa le réseau :'-) J'adore ça !</p>
+
+<p>Au <a href="/post/hyperion-part-2/">précédant post</a> j'avais configuré de quoi avoir un Xen qui marche mais
+ça ne suffit pas car rien n'avait été fait pour que les VMs puissent avoir accès
+au réseau. Il est temps de remédier à cela.</p>
+
+<p>Tout d'abord, une petite description des contraintes:</p>
+
+<ul>
+<li>Je veux que le routeur/firewall du réseau soit une VMs, pas question que ce
+soit Hyperion qui soit le routeur. Cela augmentera sensiblement la
+sécurité. Il ne s'occupera que de router et filtrer les paquets. Pour des
+raisons pratiques, j'y mettrai aussi le cache DNS et le serveur DHCP. Je
+pourrais faire des VMs séparées pour ces deux derniers mais bon, faut pas
+exagérer, c'est pas la NSA non plus.</li>
+</ul>
+
+<p></p>
   </div>
   
     <p><a itemprop="url" href="/post/hyperion-part-3/">Read More&nbsp;&raquo;</a></p>

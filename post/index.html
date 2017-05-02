@@ -282,8 +282,15 @@ sur github.io avec Hugo (en la rendant d&#39;abord plus compliquée)
     <blockquote itemprop="headline">Vous voulez vous essayer au Big Data ? C&#39;est par ici !</blockquote>
   
   <div itemprop="description">
-    Alors bien sûr, il y a les VMs Cloudera mais elles nécessitent pas mal de RAM et, avec leur propre Cloudera Manager, nous éloignent des outils basiques de chez Apache. Même si ils font apparemment du bon boulot, après tout, leur but, c'est de faire un peu de pub et de vendre du support.
-On va plutôt partir ici sur une Debian 8 comme base et détailler les étapes pour avoir son petit pseudo-cluster Hadoop de dev.
+    <p>Alors bien sûr, il y a les <a href="https://www.cloudera.com/downloads/quickstart_vms.html" target="_blank">VMs Cloudera</a> mais elles nécessitent pas
+mal de RAM et, avec leur propre <em>Cloudera Manager</em>, nous éloignent des outils
+basiques de chez Apache. Même si ils font apparemment du bon boulot, après tout,
+leur but, c'est de faire un peu de pub et de vendre du support.</p>
+
+<p>On va plutôt partir ici sur une Debian 8 comme base et détailler les étapes pour
+avoir son petit pseudo-cluster <a href="https://en.wikipedia.org/wiki/Apache_Hadoop" target="_blank">Hadoop</a> de dev.</p>
+
+<p></p>
   </div>
   
     <p><a itemprop="url" href="/post/hadoop-dev-server/">Read More&nbsp;&raquo;</a></p>
@@ -320,10 +327,24 @@ On va plutôt partir ici sur une Debian 8 comme base et détailler les étapes p
 </blockquote>
   
   <div itemprop="description">
-    Haaaaa le réseau :'-) J'adore ça !
-Au précédant post j'avais configuré de quoi avoir un Xen qui marche mais ça ne suffit pas car rien n'avait été fait pour que les VMs puissent avoir accès au réseau. Il est temps de remédier à cela.
-Tout d'abord, une petite description des contraintes:
- Je veux que le routeur/firewall du réseau soit une VMs, pas question que ce soit Hyperion qui soit le routeur.
+    <p>Haaaaa le réseau :'-) J'adore ça !</p>
+
+<p>Au <a href="/post/hyperion-part-2/">précédant post</a> j'avais configuré de quoi avoir un Xen qui marche mais
+ça ne suffit pas car rien n'avait été fait pour que les VMs puissent avoir accès
+au réseau. Il est temps de remédier à cela.</p>
+
+<p>Tout d'abord, une petite description des contraintes:</p>
+
+<ul>
+<li>Je veux que le routeur/firewall du réseau soit une VMs, pas question que ce
+soit Hyperion qui soit le routeur. Cela augmentera sensiblement la
+sécurité. Il ne s'occupera que de router et filtrer les paquets. Pour des
+raisons pratiques, j'y mettrai aussi le cache DNS et le serveur DHCP. Je
+pourrais faire des VMs séparées pour ces deux derniers mais bon, faut pas
+exagérer, c'est pas la NSA non plus.</li>
+</ul>
+
+<p></p>
   </div>
   
     <p><a itemprop="url" href="/post/hyperion-part-3/">Read More&nbsp;&raquo;</a></p>
@@ -360,8 +381,22 @@ Tout d'abord, une petite description des contraintes:
 du système et mise en place de la virtualisation</blockquote>
   
   <div itemprop="description">
-    Je rappelle donc les objectifs définis lors du précédant post: construire un routeur/firewall/serveur de dev/double media center à moindre coûts et avec le maximum de sécurité. Pour ce faire, j'ai prévu de faire le plus de récup possible dans mes 3 étagères bourrées de pièces d'ordi.
-Mes trouvailles  Une MSI B75MA-E33 avec un Celeron G1610. Avec ça j'aurais 1 port SATA 6Gbps, 3 ports SATA 3Gbps (ça suffira amplement vu que l'entonnoir ici sera l'ethernet), USB3, Ethernet 1Gbps, Intel Graphic HD inclu dans le processeur et un port HDMI (sur les deux nécessaires).
+    <p>Je rappelle donc les objectifs définis lors du <a href="/post/hyperion-part-1/">précédant post</a>:
+construire un routeur/firewall/serveur de dev/double media center à moindre
+coûts et avec le maximum de sécurité. Pour ce faire, j'ai prévu de faire le plus
+de récup possible dans mes 3 étagères bourrées de pièces d'ordi.</p>
+
+<h1 id="mes-trouvailles">Mes trouvailles</h1>
+
+<ul>
+<li>Une <a href="https://www.msi.com/Motherboard/B75MA-E33.html" target="_blank">MSI B75MA-E33</a> avec un <a href="http://ark.intel.com/products/71072/Intel-Celeron-Processor-G1610-2M-Cache-2_60-GHz" target="_blank">Celeron G1610</a>.  Avec ça j'aurais
+1 port SATA 6Gbps, 3 ports SATA 3Gbps (ça suffira amplement vu que l'entonnoir
+ici sera l'ethernet), USB3, Ethernet 1Gbps, Intel Graphic HD inclu dans le
+processeur et un port HDMI (sur les deux nécessaires).
+<br /></li>
+</ul>
+
+<p></p>
   </div>
   
     <p><a itemprop="url" href="/post/hyperion-part-2/">Read More&nbsp;&raquo;</a></p>
@@ -398,7 +433,31 @@ Mes trouvailles  Une MSI B75MA-E33 avec un Celeron G1610. Avec ça j'aurais 1 po
 fonctionnalités dont un devOps peut rêver: Introduction</blockquote>
   
   <div itemprop="description">
-    L'idée c'est de nous faire une machine vraiment-tout-en-un à pas trop cher. Ça tombe bien on avait justement une carte mère avec son processeur plutôt pas mal qui traînait à la maison. c'est une MSI B75MA-E33 avec un Celeron G1610. Alors OK, les gamers vont me huer ici, mais je rappelle que le but c'est de minimiser la consommation en maximisant des fonctionnalités. Et il y a tout ce qu'il faut: 1Gbps, USB3, SATA 6Gb/s, HDMI, virtualisation, et même un petit format pour rentrer dans tous les boîtiers.
+    <p>L'idée c'est de nous faire une machine <strong>vraiment-tout-en-un</strong> à pas trop
+cher. Ça tombe bien on avait justement une carte mère avec son processeur plutôt
+pas mal qui traînait à la maison. c'est
+une <a href="https://www.msi.com/Motherboard/B75MA-E33.html" target="_blank">MSI B75MA-E33</a> avec
+un
+<a href="http://ark.intel.com/products/71072/Intel-Celeron-Processor-G1610-2M-Cache-2_60-GHz" target="_blank">Celeron G1610</a>.
+Alors OK, les gamers vont me huer ici, mais je rappelle que le but c'est de
+minimiser la consommation en maximisant des fonctionnalités. Et il y a tout ce
+qu'il faut: <strong>1Gbps</strong>, <strong>USB3</strong>, <strong>SATA 6Gb/s</strong>, <strong>HDMI</strong>, <strong>virtualisation</strong>,
+et même un petit format pour rentrer dans tous les boîtiers.</p>
+
+<h1 id="c-koikonveu-ou-cahier-des-charges-pour-les-puristes">C koikonveu ? (ou &quot;cahier des charges&quot; pour les puristes)</h1>
+
+<p>Voilà ce que nous voulons avoir comme service basiques:</p>
+
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/Routeur" target="_blank">Routeur</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Pare-feu_(informatique)" target="_blank">Firewall</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Domain_Name_System" target="_blank">DNS</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol" target="_blank">DHCP</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Point_d%27acc%C3%A8s_sans_fil" target="_blank">Access Point Wifi</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/IPv6" target="_blank">IPv6</a></li>
+</ul>
+
+<p></p>
   </div>
   
     <p><a itemprop="url" href="/post/hyperion-part-1/">Read More&nbsp;&raquo;</a></p>

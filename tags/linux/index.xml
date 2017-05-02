@@ -17,8 +17,15 @@
       <pubDate>Sun, 23 Apr 2017 11:31:51 +0200</pubDate>
       
       <guid>http://xakz.github.io/post/hadoop-dev-server/</guid>
-      <description>Alors bien sûr, il y a les VMs Cloudera mais elles nécessitent pas mal de RAM et, avec leur propre Cloudera Manager, nous éloignent des outils basiques de chez Apache. Même si ils font apparemment du bon boulot, après tout, leur but, c&#39;est de faire un peu de pub et de vendre du support.
-On va plutôt partir ici sur une Debian 8 comme base et détailler les étapes pour avoir son petit pseudo-cluster Hadoop de dev.</description>
+      <description>&lt;p&gt;Alors bien sûr, il y a les &lt;a href=&#34;https://www.cloudera.com/downloads/quickstart_vms.html&#34; target=&#34;_blank&#34;&gt;VMs Cloudera&lt;/a&gt; mais elles nécessitent pas
+mal de RAM et, avec leur propre &lt;em&gt;Cloudera Manager&lt;/em&gt;, nous éloignent des outils
+basiques de chez Apache. Même si ils font apparemment du bon boulot, après tout,
+leur but, c&#39;est de faire un peu de pub et de vendre du support.&lt;/p&gt;
+
+&lt;p&gt;On va plutôt partir ici sur une Debian 8 comme base et détailler les étapes pour
+avoir son petit pseudo-cluster &lt;a href=&#34;https://en.wikipedia.org/wiki/Apache_Hadoop&#34; target=&#34;_blank&#34;&gt;Hadoop&lt;/a&gt; de dev.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -27,10 +34,24 @@ On va plutôt partir ici sur une Debian 8 comme base et détailler les étapes p
       <pubDate>Fri, 22 Jan 2016 13:53:21 +0200</pubDate>
       
       <guid>http://xakz.github.io/post/hyperion-part-3/</guid>
-      <description>Haaaaa le réseau :&#39;-) J&#39;adore ça !
-Au précédant post j&#39;avais configuré de quoi avoir un Xen qui marche mais ça ne suffit pas car rien n&#39;avait été fait pour que les VMs puissent avoir accès au réseau. Il est temps de remédier à cela.
-Tout d&#39;abord, une petite description des contraintes:
- Je veux que le routeur/firewall du réseau soit une VMs, pas question que ce soit Hyperion qui soit le routeur.</description>
+      <description>&lt;p&gt;Haaaaa le réseau :&#39;-) J&#39;adore ça !&lt;/p&gt;
+
+&lt;p&gt;Au &lt;a href=&#34;http://xakz.github.io/post/hyperion-part-2/&#34;&gt;précédant post&lt;/a&gt; j&#39;avais configuré de quoi avoir un Xen qui marche mais
+ça ne suffit pas car rien n&#39;avait été fait pour que les VMs puissent avoir accès
+au réseau. Il est temps de remédier à cela.&lt;/p&gt;
+
+&lt;p&gt;Tout d&#39;abord, une petite description des contraintes:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Je veux que le routeur/firewall du réseau soit une VMs, pas question que ce
+soit Hyperion qui soit le routeur. Cela augmentera sensiblement la
+sécurité. Il ne s&#39;occupera que de router et filtrer les paquets. Pour des
+raisons pratiques, j&#39;y mettrai aussi le cache DNS et le serveur DHCP. Je
+pourrais faire des VMs séparées pour ces deux derniers mais bon, faut pas
+exagérer, c&#39;est pas la NSA non plus.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -39,8 +60,22 @@ Tout d&#39;abord, une petite description des contraintes:
       <pubDate>Mon, 18 Jan 2016 18:23:54 +0200</pubDate>
       
       <guid>http://xakz.github.io/post/hyperion-part-2/</guid>
-      <description>Je rappelle donc les objectifs définis lors du précédant post: construire un routeur/firewall/serveur de dev/double media center à moindre coûts et avec le maximum de sécurité. Pour ce faire, j&#39;ai prévu de faire le plus de récup possible dans mes 3 étagères bourrées de pièces d&#39;ordi.
-Mes trouvailles  Une MSI B75MA-E33 avec un Celeron G1610. Avec ça j&#39;aurais 1 port SATA 6Gbps, 3 ports SATA 3Gbps (ça suffira amplement vu que l&#39;entonnoir ici sera l&#39;ethernet), USB3, Ethernet 1Gbps, Intel Graphic HD inclu dans le processeur et un port HDMI (sur les deux nécessaires).</description>
+      <description>&lt;p&gt;Je rappelle donc les objectifs définis lors du &lt;a href=&#34;http://xakz.github.io/post/hyperion-part-1/&#34;&gt;précédant post&lt;/a&gt;:
+construire un routeur/firewall/serveur de dev/double media center à moindre
+coûts et avec le maximum de sécurité. Pour ce faire, j&#39;ai prévu de faire le plus
+de récup possible dans mes 3 étagères bourrées de pièces d&#39;ordi.&lt;/p&gt;
+
+&lt;h1 id=&#34;mes-trouvailles&#34;&gt;Mes trouvailles&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Une &lt;a href=&#34;https://www.msi.com/Motherboard/B75MA-E33.html&#34; target=&#34;_blank&#34;&gt;MSI B75MA-E33&lt;/a&gt; avec un &lt;a href=&#34;http://ark.intel.com/products/71072/Intel-Celeron-Processor-G1610-2M-Cache-2_60-GHz&#34; target=&#34;_blank&#34;&gt;Celeron G1610&lt;/a&gt;.  Avec ça j&#39;aurais
+1 port SATA 6Gbps, 3 ports SATA 3Gbps (ça suffira amplement vu que l&#39;entonnoir
+ici sera l&#39;ethernet), USB3, Ethernet 1Gbps, Intel Graphic HD inclu dans le
+processeur et un port HDMI (sur les deux nécessaires).
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -49,7 +84,31 @@ Mes trouvailles  Une MSI B75MA-E33 avec un Celeron G1610. Avec ça j&#39;aurais 
       <pubDate>Sat, 16 Jan 2016 09:20:34 +0200</pubDate>
       
       <guid>http://xakz.github.io/post/hyperion-part-1/</guid>
-      <description>L&#39;idée c&#39;est de nous faire une machine vraiment-tout-en-un à pas trop cher. Ça tombe bien on avait justement une carte mère avec son processeur plutôt pas mal qui traînait à la maison. c&#39;est une MSI B75MA-E33 avec un Celeron G1610. Alors OK, les gamers vont me huer ici, mais je rappelle que le but c&#39;est de minimiser la consommation en maximisant des fonctionnalités. Et il y a tout ce qu&#39;il faut: 1Gbps, USB3, SATA 6Gb/s, HDMI, virtualisation, et même un petit format pour rentrer dans tous les boîtiers.</description>
+      <description>&lt;p&gt;L&#39;idée c&#39;est de nous faire une machine &lt;strong&gt;vraiment-tout-en-un&lt;/strong&gt; à pas trop
+cher. Ça tombe bien on avait justement une carte mère avec son processeur plutôt
+pas mal qui traînait à la maison. c&#39;est
+une &lt;a href=&#34;https://www.msi.com/Motherboard/B75MA-E33.html&#34; target=&#34;_blank&#34;&gt;MSI B75MA-E33&lt;/a&gt; avec
+un
+&lt;a href=&#34;http://ark.intel.com/products/71072/Intel-Celeron-Processor-G1610-2M-Cache-2_60-GHz&#34; target=&#34;_blank&#34;&gt;Celeron G1610&lt;/a&gt;.
+Alors OK, les gamers vont me huer ici, mais je rappelle que le but c&#39;est de
+minimiser la consommation en maximisant des fonctionnalités. Et il y a tout ce
+qu&#39;il faut: &lt;strong&gt;1Gbps&lt;/strong&gt;, &lt;strong&gt;USB3&lt;/strong&gt;, &lt;strong&gt;SATA 6Gb/s&lt;/strong&gt;, &lt;strong&gt;HDMI&lt;/strong&gt;, &lt;strong&gt;virtualisation&lt;/strong&gt;,
+et même un petit format pour rentrer dans tous les boîtiers.&lt;/p&gt;
+
+&lt;h1 id=&#34;c-koikonveu-ou-cahier-des-charges-pour-les-puristes&#34;&gt;C koikonveu ? (ou &amp;quot;cahier des charges&amp;quot; pour les puristes)&lt;/h1&gt;
+
+&lt;p&gt;Voilà ce que nous voulons avoir comme service basiques:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://fr.wikipedia.org/wiki/Routeur&#34; target=&#34;_blank&#34;&gt;Routeur&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://fr.wikipedia.org/wiki/Pare-feu_(informatique)&#34; target=&#34;_blank&#34;&gt;Firewall&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://fr.wikipedia.org/wiki/Domain_Name_System&#34; target=&#34;_blank&#34;&gt;DNS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://fr.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol&#34; target=&#34;_blank&#34;&gt;DHCP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://fr.wikipedia.org/wiki/Point_d%27acc%C3%A8s_sans_fil&#34; target=&#34;_blank&#34;&gt;Access Point Wifi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://fr.wikipedia.org/wiki/IPv6&#34; target=&#34;_blank&#34;&gt;IPv6&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -17,10 +17,24 @@
       <pubDate>Fri, 22 Jan 2016 13:53:21 +0200</pubDate>
       
       <guid>http://xakz.github.io/post/hyperion-part-3/</guid>
-      <description>Haaaaa le réseau :&#39;-) J&#39;adore ça !
-Au précédant post j&#39;avais configuré de quoi avoir un Xen qui marche mais ça ne suffit pas car rien n&#39;avait été fait pour que les VMs puissent avoir accès au réseau. Il est temps de remédier à cela.
-Tout d&#39;abord, une petite description des contraintes:
- Je veux que le routeur/firewall du réseau soit une VMs, pas question que ce soit Hyperion qui soit le routeur.</description>
+      <description>&lt;p&gt;Haaaaa le réseau :&#39;-) J&#39;adore ça !&lt;/p&gt;
+
+&lt;p&gt;Au &lt;a href=&#34;http://xakz.github.io/post/hyperion-part-2/&#34;&gt;précédant post&lt;/a&gt; j&#39;avais configuré de quoi avoir un Xen qui marche mais
+ça ne suffit pas car rien n&#39;avait été fait pour que les VMs puissent avoir accès
+au réseau. Il est temps de remédier à cela.&lt;/p&gt;
+
+&lt;p&gt;Tout d&#39;abord, une petite description des contraintes:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Je veux que le routeur/firewall du réseau soit une VMs, pas question que ce
+soit Hyperion qui soit le routeur. Cela augmentera sensiblement la
+sécurité. Il ne s&#39;occupera que de router et filtrer les paquets. Pour des
+raisons pratiques, j&#39;y mettrai aussi le cache DNS et le serveur DHCP. Je
+pourrais faire des VMs séparées pour ces deux derniers mais bon, faut pas
+exagérer, c&#39;est pas la NSA non plus.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
