@@ -227,7 +227,7 @@ figure:hover:before { opacity: 0; }
 
 
 
-<meta itemprop="keywords" content="administration,big-data,hyperion,admin,bigdata,bridge,debian,hadoop,hardware,linux,network,xen," />
+<meta itemprop="keywords" content="administration,big-data,coding,hyperion,admin,bigdata,bridge,debian,git,github-pages,hadoop,hardware,hugo,linux,makefile,network,xen," />
 
     <header>
       <h1 itemprop="headline">Installer un pseudo-cluster Hadoop</h1>
@@ -293,7 +293,7 @@ figure:hover:before { opacity: 0; }
 <p>Alors bien sûr, il y a les <a href="https://www.cloudera.com/downloads/quickstart_vms.html" target="_blank">VMs Cloudera</a> mais elles nécessitent pas
 mal de RAM et, avec leur propre <em>Cloudera Manager</em>, nous éloignent des outils
 basiques de chez Apache. Même si ils font apparemment du bon boulot, après tout,
-leur but, c&rsquo;est de faire un peu de pub et de vendre du support.</p>
+leur but, c'est de faire un peu de pub et de vendre du support.</p>
 
 <p>On va plutôt partir ici sur une Debian 8 comme base et détailler les étapes pour
 avoir son petit pseudo-cluster <a href="https://en.wikipedia.org/wiki/Apache_Hadoop" target="_blank">Hadoop</a> de dev.</p>
@@ -302,10 +302,10 @@ avoir son petit pseudo-cluster <a href="https://en.wikipedia.org/wiki/Apache_Had
 
 <p>On a à la maison la machine idéale pour ce genre de chose: <a href="/categories/hyperion">Hyperion</a>.</p>
 
-<p>Donc c&rsquo;est parti pour se faire une VM Xen: <em>2 vcpus</em>, <em>3GB</em> de RAM (plus ce
+<p>Donc c'est parti pour se faire une VM Xen: <em>2 vcpus</em>, <em>3GB</em> de RAM (plus ce
 serait mieux mais la machine hôte est un peu limitée), <em>4GB</em> de swap, <em>10GB</em> de
 partition root (à changer selon vos besoin). Je passe les détails de
-l&rsquo;installation et de la configuration de base. A la fin on se retrouve juste
+l'installation et de la configuration de base. A la fin on se retrouve juste
 tout simplement avec une Debian 8 fraîchement installée et prête a servir.</p>
 
 <h1 id="étape-0-openjdk-8-et-apache-bigtop">Étape 0: OpenJDK 8 et Apache BigTop</h1>
@@ -318,8 +318,8 @@ apt-get update
 apt-get install openjdk-8-jdk
 </code></pre>
 
-<p><a href="https://bigtop.apache.org/" target="_blank">Apache BigTop</a> est un ensemble d&rsquo;outils, de script de build, de paquets
-pour votre distribution préférée, des recettes <a href="https://fr.wikipedia.org/wiki/Vagrant" target="_blank">Vagrant</a> et aussi d&rsquo;image
+<p><a href="https://bigtop.apache.org/" target="_blank">Apache BigTop</a> est un ensemble d'outils, de script de build, de paquets
+pour votre distribution préférée, des recettes <a href="https://fr.wikipedia.org/wiki/Vagrant" target="_blank">Vagrant</a> et aussi d'image
 Docker (en beta pour le moment). Nous ce qui nous intéresse ici ce sont les
 paquets Debian pré-build comme on aime 😉</p>
 
@@ -332,24 +332,24 @@ apt-get update
 
 <p>Et voilà, on est prêt à lancer les installations 😄</p>
 
-<p>Personnellement, je n&rsquo;ajoute pas la clef GPG à apt-get, simple préférence,
-j&rsquo;aime pouvoir contrôler lorsqu&rsquo;un paquet extérieur à Debian va s&rsquo;installer.</p>
+<p>Personnellement, je n'ajoute pas la clef GPG à apt-get, simple préférence,
+j'aime pouvoir contrôler lorsqu'un paquet extérieur à Debian va s'installer.</p>
 
 <h1 id="hadoop-hdfs-et-yarn">Hadoop, HDFS et YARN</h1>
 
 <p>Tout le stack <a href="https://en.wikipedia.org/wiki/Apache_Hadoop" target="_blank">Hadoop</a> se base sur <a href="https://en.wikipedia.org/wiki/Apache_Hadoop#HDFS" target="_blank">HDFS</a> qui est un système de fichiers
-distribué développé en Java. Il se compose d&rsquo;un <code>namenode</code> qui s&rsquo;occupe des
-metadonnées, d&rsquo;un <code>datanode</code> par machine qui s&rsquo;occupe du stockage des données
+distribué développé en Java. Il se compose d'un <code>namenode</code> qui s'occupe des
+metadonnées, d'un <code>datanode</code> par machine qui s'occupe du stockage des données
 elles-mêmes et du <code>secondarynamenode</code> qui assiste le <code>namenode</code>.</p>
 
 <p>Et YARN est le gestionnaire de ressource pour le cluster, il ordonnance les
-tâches sur les différentes machines du cluster. C&rsquo;est une évolution de l&rsquo;API
-MapReduce d&rsquo;origine. Il se compose d&rsquo;un <code>resourcemanager</code> qui ordonnance les
-tâches et d&rsquo;un <code>nodemanager</code> par machine qui lance les tâches sur la machine et
-remonte l&rsquo;état de celle ci au <code>resourcemanager</code>.</p>
+tâches sur les différentes machines du cluster. C'est une évolution de l'API
+MapReduce d'origine. Il se compose d'un <code>resourcemanager</code> qui ordonnance les
+tâches et d'un <code>nodemanager</code> par machine qui lance les tâches sur la machine et
+remonte l'état de celle ci au <code>resourcemanager</code>.</p>
 
 <p>Les pages wikipedia vous en diront bien plus, on va
-juste se concentrer sur l&rsquo;installation et la configuration de la bête.</p>
+juste se concentrer sur l'installation et la configuration de la bête.</p>
 
 <h1 id="installation">Installation</h1>
 
@@ -436,7 +436,7 @@ apt-get install hadoop-hdfs-datanode hadoop-hdfs-namenode hadoop-hdfs-secondaryn
 
 <h1 id="initialisation-du-pseudo-cluster-hdfs">Initialisation du pseudo-cluster HDFS</h1>
 
-<p>Pour fonctionner, HDFS nécessite d&rsquo;être formaté et un ensemble de dossiers de
+<p>Pour fonctionner, HDFS nécessite d'être formaté et un ensemble de dossiers de
 base doit être créé.</p>
 
 <p>Formatage:</p>
@@ -444,9 +444,9 @@ base doit être créé.</p>
 <pre><code class="language-sh">/etc/init.d/hadoop-hdfs-namenode init
 </code></pre>
 
-<p>Ensuite il faut passer sur l&rsquo;utilisateur <em>hdfs</em> pour initialiser tout ça, c&rsquo;est
+<p>Ensuite il faut passer sur l'utilisateur <em>hdfs</em> pour initialiser tout ça, c'est
 comme le <em>root</em> de HDFS. Un petit coup de <code>su - hdfs</code> pour changer
-d&rsquo;utilisateur. Ensuite il faut exécuter cette série de commandes:</p>
+d'utilisateur. Ensuite il faut exécuter cette série de commandes:</p>
 
 <pre><code class="language-sh"># Dossier temporaire utilisable par tous
 hdfs dfs fs -mkdir /tmp
@@ -475,7 +475,7 @@ hdfs dfs fs -chown xakz:xakz /user/xakz
 hdfs dfs fs -chmod 775 /user/xakz
 </code></pre>
 
-<p>Il n&rsquo;y a plus qu&rsquo;à tout redémarrer:</p>
+<p>Il n'y a plus qu'à tout redémarrer:</p>
 
 <pre><code class="language-sh">for i in hadoop-hdfs-datanode hadoop-hdfs-namenode hadoop-hdfs-secondarynamenode hadoop-mapreduce-historyserver hadoop-yarn-nodemanager hadoop-yarn-resourcemanager; do
     service restart $i
@@ -495,11 +495,11 @@ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar pi 10 1000
 <p>Vous devriez voir une approximation du nombre pi sur la dernière ligne de la
 sortie.</p>
 
-<p>Vous pouvez aussi consulter l&rsquo;état des jobs sur <a href="http://localhost:8088/" target="_blank">http://localhost:8088/</a>
-(remplacez localhost par l&rsquo;IP des votre machine/VM)</p>
+<p>Vous pouvez aussi consulter l'état des jobs sur <a href="http://localhost:8088/" target="_blank">http://localhost:8088/</a>
+(remplacez localhost par l'IP des votre machine/VM)</p>
 
 <p>Un autre exemple, utilisant HDFS cette fois: un grep.
-Commençons par preparer l&rsquo;input:</p>
+Commençons par preparer l'input:</p>
 
 <pre><code class="language-sh">hdfs dfs -mkdir input
 hdfs dfs -put /etc/services input/
@@ -522,12 +522,12 @@ hdfs dfs -cat 'output/*'
 
 <h1 id="encore">Encore !</h1>
 
-<p>Il y a encore bien d&rsquo;autres outils consacrés au Big Data chez Apache. Nous nous
-concentrerons sur l&rsquo;installation de <a href="https://en.wikipedia.org/wiki/Apache_HBase" target="_blank">HBase</a> dans un <a href="/post/install-hbase/">prochain post</a></p>
+<p>Il y a encore bien d'autres outils consacrés au Big Data chez Apache. Nous nous
+concentrerons sur l'installation de <a href="https://en.wikipedia.org/wiki/Apache_HBase" target="_blank">HBase</a> dans un <a href="/post/install-hbase/">prochain post</a></p>
 
-<p>J&rsquo;espère avoir pu en aider certain(e)s. Ce post fût plutôt consacré à
-l&rsquo;installation. Un jour prochain, peut-être, je me lancerai dans un document
-bien plus vaste destiné à exposer les details de l&rsquo;architecture d&rsquo;un cluster
+<p>J'espère avoir pu en aider certain(e)s. Ce post fût plutôt consacré à
+l'installation. Un jour prochain, peut-être, je me lancerai dans un document
+bien plus vaste destiné à exposer les details de l'architecture d'un cluster
 Hadoop.</p>
 
 <h1 id="sources">Sources</h1>

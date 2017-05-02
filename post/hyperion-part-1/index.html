@@ -230,7 +230,7 @@ fonctionnalités dont un devOps peut rêver: Introduction">
 
 
 
-<meta itemprop="keywords" content="administration,big-data,hyperion,admin,bigdata,bridge,debian,hadoop,hardware,linux,network,xen," />
+<meta itemprop="keywords" content="administration,big-data,coding,hyperion,admin,bigdata,bridge,debian,git,github-pages,hadoop,hardware,hugo,linux,makefile,network,xen," />
 
     <header>
       <h1 itemprop="headline">Hyperion, routeur tout-en-un: Round 0 - Préambule</h1>
@@ -256,12 +256,12 @@ fonctionnalités dont un devOps peut rêver: Introduction</blockquote>
     <summary>Table of Contents</summary>
     <nav id="TableOfContents">
 <ul>
-<li><a href="#c-koikonveu-ou-cahier-des-charges-pour-les-puristes">C koikonveu ? (ou &ldquo;cahier des charges&rdquo; pour les puristes)</a></li>
+<li><a href="#c-koikonveu-ou-cahier-des-charges-pour-les-puristes">C koikonveu ? (ou &quot;cahier des charges&quot; pour les puristes)</a></li>
 <li><a href="#pourquoi-faire-tout-ça">Pourquoi faire tout ça ?</a>
 <ul>
-<li><a href="#devops-it-s-fun">DevOps, it&rsquo;s FUN !</a></li>
-<li><a href="#marre-des-box-partout">Marre des &ldquo;box&rdquo; partout !</a></li>
-<li><a href="#un-raspberry-pi-c-est-cool-mais-c-est-lent">Un raspberry pi c&rsquo;est cool mais c&rsquo;est lent</a></li>
+<li><a href="#devops-it-s-fun">DevOps, it's FUN !</a></li>
+<li><a href="#marre-des-box-partout">Marre des &quot;box&quot; partout !</a></li>
+<li><a href="#un-raspberry-pi-c-est-cool-mais-c-est-lent">Un raspberry pi c'est cool mais c'est lent</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -285,18 +285,18 @@ fonctionnalités dont un devOps peut rêver: Introduction</blockquote>
     <div itemprop="articleBody">
       
 
-<p>L&rsquo;idée c&rsquo;est de nous faire une machine <strong>vraiment-tout-en-un</strong> à pas trop
+<p>L'idée c'est de nous faire une machine <strong>vraiment-tout-en-un</strong> à pas trop
 cher. Ça tombe bien on avait justement une carte mère avec son processeur plutôt
-pas mal qui traînait à la maison. c&rsquo;est
+pas mal qui traînait à la maison. c'est
 une <a href="https://www.msi.com/Motherboard/B75MA-E33.html" target="_blank">MSI B75MA-E33</a> avec
 un
 <a href="http://ark.intel.com/products/71072/Intel-Celeron-Processor-G1610-2M-Cache-2_60-GHz" target="_blank">Celeron G1610</a>.
-Alors OK, les gamers vont me huer ici, mais je rappelle que le but c&rsquo;est de
+Alors OK, les gamers vont me huer ici, mais je rappelle que le but c'est de
 minimiser la consommation en maximisant des fonctionnalités. Et il y a tout ce
-qu&rsquo;il faut: <strong>1Gbps</strong>, <strong>USB3</strong>, <strong>SATA 6Gb/s</strong>, <strong>HDMI</strong>, <strong>virtualisation</strong>,
+qu'il faut: <strong>1Gbps</strong>, <strong>USB3</strong>, <strong>SATA 6Gb/s</strong>, <strong>HDMI</strong>, <strong>virtualisation</strong>,
 et même un petit format pour rentrer dans tous les boîtiers.</p>
 
-<h1 id="c-koikonveu-ou-cahier-des-charges-pour-les-puristes">C koikonveu ? (ou &ldquo;cahier des charges&rdquo; pour les puristes)</h1>
+<h1 id="c-koikonveu-ou-cahier-des-charges-pour-les-puristes">C koikonveu ? (ou &quot;cahier des charges&quot; pour les puristes)</h1>
 
 <p>Voilà ce que nous voulons avoir comme service basiques:</p>
 
@@ -320,7 +320,7 @@ au <a href="https://en.wikipedia.org/wiki/Multiseat_configuration" target="_blan
 <li>Le tout avec le plus de sécurité possible</li>
 </ul>
 
-<p>Bien-sûr à cela s&rsquo;ajouteront les service futures. Je ferai un post descriptif à
+<p>Bien-sûr à cela s'ajouteront les service futures. Je ferai un post descriptif à
 chaque fois, du moins lorsque cela en vaut la peine 😉.</p>
 
 <p>Pour les impatients, mordus de ligne de commande et assoiffés du tourne vis, vous
@@ -328,30 +328,30 @@ pouvez tout de suite passer à la <a href="/post/hyperion-part-2">suite</a> si v
 
 <h1 id="pourquoi-faire-tout-ça">Pourquoi faire tout ça ?</h1>
 
-<h2 id="devops-it-s-fun">DevOps, it&rsquo;s FUN !</h2>
+<h2 id="devops-it-s-fun">DevOps, it's FUN !</h2>
 
-<p>Je sais pas vous, mais moi j&rsquo;adore administrer des réseaux et des systèmes sous
-<strong>GNU/linux</strong>, ou sous <strong>BSD</strong> d&rsquo;ailleurs, c&rsquo;est juste que j&rsquo;y suis moins
-habitué. Quoi de mieux pour s&rsquo;amuser dans ce cas qu&rsquo;une petite installation de
+<p>Je sais pas vous, mais moi j'adore administrer des réseaux et des systèmes sous
+<strong>GNU/linux</strong>, ou sous <strong>BSD</strong> d'ailleurs, c'est juste que j'y suis moins
+habitué. Quoi de mieux pour s'amuser dans ce cas qu'une petite installation de
 machines virtualisées ?</p>
 
-<h2 id="marre-des-box-partout">Marre des &ldquo;box&rdquo; partout !</h2>
+<h2 id="marre-des-box-partout">Marre des &quot;box&quot; partout !</h2>
 
-<p>On est tous un peu dans le même cas je pense, dès que l&rsquo;on commence a s&rsquo;équiper
-en matériel internet ou multimédia, on a tous des &ldquo;box&rdquo; de tout genre, une pour
-internet, une pour la wifi, une pour chaque télé, une pour le NAS, etc&hellip;</p>
+<p>On est tous un peu dans le même cas je pense, dès que l'on commence a s'équiper
+en matériel internet ou multimédia, on a tous des &quot;box&quot; de tout genre, une pour
+internet, une pour la wifi, une pour chaque télé, une pour le NAS, etc...</p>
 
-<p>Évidement, chacune de ces &ldquo;box&rdquo; ou presque tourne avec un firmware propriétaire
+<p>Évidement, chacune de ces &quot;box&quot; ou presque tourne avec un firmware propriétaire
 différent, sur lequel on a aucun contrôle, dont les fonctionnalités, pour un
 utilisateur chevronné, laissent réellement à désirer.</p>
 
-<p>Et puis bon, ça fini par s&rsquo;accumuler niveau consommation électrique, 10W par ci,
+<p>Et puis bon, ça fini par s'accumuler niveau consommation électrique, 10W par ci,
 5W par là, avec des alimentations que ne sont même pas a <a href="https://fr.wikipedia.org/wiki/Alimentation_%C3%A0_d%C3%A9coupage" target="_blank">découpage</a> la
-plupart du temps, donc l&rsquo;alimentation consomme autant lorsque l&rsquo;appareil est en
-&ldquo;idle&rdquo; que lorsqu&rsquo;il est en pleine utilisation. Heureusement, ces dernières
-années, ce dernier point s&rsquo;est largement amélioré.</p>
+plupart du temps, donc l'alimentation consomme autant lorsque l'appareil est en
+&quot;idle&quot; que lorsqu'il est en pleine utilisation. Heureusement, ces dernières
+années, ce dernier point s'est largement amélioré.</p>
 
-<p>Exemple: la &ldquo;box&rdquo; ADSL:</p>
+<p>Exemple: la &quot;box&quot; ADSL:</p>
 
 <ul>
 <li>Pas de <a href="https://fr.wikipedia.org/wiki/Qualit%C3%A9_de_service" target="_blank">QoS</a>.
@@ -359,37 +359,37 @@ Résultat: si Monsieur télécharge la dernière
 ISO <a href="http://www.debian.org" target="_blank">Debian</a> en regardant des vidéos sur Youtube pour
 passer le temps, aucune chance pour que Madame puisse jouer a un de ses jeux
 favoris en ligne sans subir des ralentissements.</li>
-<li>Les ports sont en 100Mbps&hellip; sérieusement ? Résultat: Obligé de rajouter un
-switch 1Gbps en aval. Hop ! Une autre &ldquo;box&rdquo;.</li>
-<li>La configurabilité est souvent restreinte, change d&rsquo;un modèle à l&rsquo;autre,
-d&rsquo;une mise à jour à l&rsquo;autre, et même parfois, les paramètres sont remis par
-défaut lors d&rsquo;une de ces mise à jour, du coup, plus d&rsquo;internet&hellip; Ça a le
-dont de m&rsquo;énerver quand ça arrive le matin alors que je n&rsquo;ai pas encore bu
-mon café et que je m&rsquo;installe devant ma machine, près a gravir des montagnes
+<li>Les ports sont en 100Mbps... sérieusement ? Résultat: Obligé de rajouter un
+switch 1Gbps en aval. Hop ! Une autre &quot;box&quot;.</li>
+<li>La configurabilité est souvent restreinte, change d'un modèle à l'autre,
+d'une mise à jour à l'autre, et même parfois, les paramètres sont remis par
+défaut lors d'une de ces mise à jour, du coup, plus d'internet... Ça a le
+dont de m'énerver quand ça arrive le matin alors que je n'ai pas encore bu
+mon café et que je m'installe devant ma machine, près a gravir des montagnes
 de code.
 <br /></li>
 </ul>
 
-<h2 id="un-raspberry-pi-c-est-cool-mais-c-est-lent">Un raspberry pi c&rsquo;est cool mais c&rsquo;est lent</h2>
+<h2 id="un-raspberry-pi-c-est-cool-mais-c-est-lent">Un raspberry pi c'est cool mais c'est lent</h2>
 
 <p>Personnellement, aller fouiller dans une étagère de DVD, ça me saoule, et en
 plus ça prend de la place. Je préfère nettement un bon
 vieux <a href="https://kodi.tv/" target="_blank">Kodi</a> (anciennement nommé XBMC).</p>
 
-<p>Donc, c&rsquo;est quoi l&rsquo;idée logique pour moi ? Acheter
-un <a href="https://www.raspberrypi.org/" target="_blank">raspberry pi</a> et y installer Kodi, ce que j&rsquo;ai
+<p>Donc, c'est quoi l'idée logique pour moi ? Acheter
+un <a href="https://www.raspberrypi.org/" target="_blank">raspberry pi</a> et y installer Kodi, ce que j'ai
 fait. Malheureusement, certains formats vidéos sont mal supportés (pas de
-décodage hardware pour certains) et l&rsquo;interface graphique est vraiment lente.</p>
+décodage hardware pour certains) et l'interface graphique est vraiment lente.</p>
 
-<p>Ensuite j&rsquo;ai tenté avec
+<p>Ensuite j'ai tenté avec
 un <a href="http://ark.intel.com/products/78577/Intel-NUC-Kit-DE3815TYKHE" target="_blank">Intel NUC</a>,
-je me suis dit: &ldquo;Ça au moins c&rsquo;est un vrai PC en miniature&rdquo;. Mais bon voilà,
-croyez moi ou pas, le petit processeur Atom de la bête n&rsquo;arrivais pas à décoder
-le x264 au delà de 576p (c&rsquo;était déjà tout juste a 576p en fait). En gros, même
-soucis qu&rsquo;avec le raspberry pi mais plus cher 😲. Par contre l&rsquo;UI était
+je me suis dit: &quot;Ça au moins c'est un vrai PC en miniature&quot;. Mais bon voilà,
+croyez moi ou pas, le petit processeur Atom de la bête n'arrivais pas à décoder
+le x264 au delà de 576p (c'était déjà tout juste a 576p en fait). En gros, même
+soucis qu'avec le raspberry pi mais plus cher 😲. Par contre l'UI était
 super fluide 😄.</p>
 
-<p>Et puis bon, ça nous fait encore des &ldquo;box&rdquo; supplémentaires dans notre
+<p>Et puis bon, ça nous fait encore des &quot;box&quot; supplémentaires dans notre
 installation.</p>
 
 <p>EDIT: Depuis, ils ont sorti le

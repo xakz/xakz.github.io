@@ -232,7 +232,7 @@ figure:hover:before { opacity: 0; }
 
 
 
-<meta itemprop="keywords" content="administration,big-data,hyperion,admin,bigdata,bridge,debian,hadoop,hardware,linux,network,xen," />
+<meta itemprop="keywords" content="administration,big-data,coding,hyperion,admin,bigdata,bridge,debian,git,github-pages,hadoop,hardware,hugo,linux,makefile,network,xen," />
 
     <header>
       <h1 itemprop="headline">Hyperion, routeur tout-en-un: Round 2 - Le réseau</h1>
@@ -262,9 +262,9 @@ figure:hover:before { opacity: 0; }
 <li><a href="#schéma-en-ascii">Schéma (en ASCII !!)</a></li>
 <li><a href="#particularité-pour-la-carte-wifi">Particularité pour la carte wifi</a></li>
 <li><a href="#préparatifs">Préparatifs</a></li>
-<li><a href="#le-déluge-d-interfaces">Le déluge d&rsquo;interfaces !</a></li>
-<li><a href="#dmz-cmz-cluster0-c-est-pourquoi-faire">DMZ, CMZ, cluster0 ? c&rsquo;est pourquoi faire ?</a></li>
-<li><a href="#point-d-accès-wifi">Point d&rsquo;accès wifi</a></li>
+<li><a href="#le-déluge-d-interfaces">Le déluge d'interfaces !</a></li>
+<li><a href="#dmz-cmz-cluster0-c-est-pourquoi-faire">DMZ, CMZ, cluster0 ? c'est pourquoi faire ?</a></li>
+<li><a href="#point-d-accès-wifi">Point d'accès wifi</a></li>
 <li><a href="#un-dernier-réglage-xen">Un dernier réglage Xen</a></li>
 <li><a href="#sources">Sources</a></li>
 </ul>
@@ -289,29 +289,29 @@ figure:hover:before { opacity: 0; }
     <div itemprop="articleBody">
       
 
-<p>Haaaaa le réseau :&lsquo;-) J&rsquo;adore ça !</p>
+<p>Haaaaa le réseau :'-) J'adore ça !</p>
 
-<p>Au <a href="/post/hyperion-part-2/">précédant post</a> j&rsquo;avais configuré de quoi avoir un Xen qui marche mais
-ça ne suffit pas car rien n&rsquo;avait été fait pour que les VMs puissent avoir accès
+<p>Au <a href="/post/hyperion-part-2/">précédant post</a> j'avais configuré de quoi avoir un Xen qui marche mais
+ça ne suffit pas car rien n'avait été fait pour que les VMs puissent avoir accès
 au réseau. Il est temps de remédier à cela.</p>
 
-<p>Tout d&rsquo;abord, une petite description des contraintes:</p>
+<p>Tout d'abord, une petite description des contraintes:</p>
 
 <ul>
 <li><p>Je veux que le routeur/firewall du réseau soit une VMs, pas question que ce
 soit Hyperion qui soit le routeur. Cela augmentera sensiblement la
-sécurité. Il ne s&rsquo;occupera que de router et filtrer les paquets. Pour des
-raisons pratiques, j&rsquo;y mettrai aussi le cache DNS et le serveur DHCP. Je
+sécurité. Il ne s'occupera que de router et filtrer les paquets. Pour des
+raisons pratiques, j'y mettrai aussi le cache DNS et le serveur DHCP. Je
 pourrais faire des VMs séparées pour ces deux derniers mais bon, faut pas
-exagérer, c&rsquo;est pas la NSA non plus.</p></li>
+exagérer, c'est pas la NSA non plus.</p></li>
 
 <li><p>La carte mère ne possédant pas de IOMMU, je ne peux pas faire de PCI
-passthrough avec Xen. Donc les cartes réseau physiques d&rsquo;Hyperion devront être
-gérée partiellement par Hyperion. Ce n&rsquo;est pas trop un soucis, j&rsquo;utiliserai
+passthrough avec Xen. Donc les cartes réseau physiques d'Hyperion devront être
+gérée partiellement par Hyperion. Ce n'est pas trop un soucis, j'utiliserai
 des <a href="https://en.wikipedia.org/wiki/Bridging_(networking)" target="_blank">bridges</a> uniquement connectés entre le périphérique réseau est la
 VM routeur.</p></li>
 
-<li><p>Comme j&rsquo;aime bien quand c&rsquo;est compliqué 😉, je vais faire plusieurs sous
+<li><p>Comme j'aime bien quand c'est compliqué 😉, je vais faire plusieurs sous
 réseaux. Ça fera autant de bridges à gérer.</p></li>
 </ul>
 
@@ -321,22 +321,22 @@ réseaux. Ça fera autant de bridges à gérer.</p></li>
 le <a href="https://en.wikipedia.org/wiki/Network_address_translation" target="_blank">NAT</a> mais ces deux solutions sont certes simple a mettre en place mais ne
 permettent pas tout ce que je souhaite. Par exemple, le DHCP ne va pas
 fonctionner, et surtout hyperion devient obligatoirement le routeur, ce qui
-n&rsquo;est pas ce que je veux.</p>
+n'est pas ce que je veux.</p>
 
 <p>Ensuite il y a les linux <a href="https://en.wikipedia.org/wiki/Bridging_(networking)" target="_blank">bridge</a>, très pratiques, simple, et directement
 intégré à linux. Il faut les voir comme des <a href="https://en.wikipedia.org/wiki/Network_switch" target="_blank">switch</a> physiques auxquels on
 viens brancher des câbles Ethernet virtuels. Ce sera notre solution.</p>
 
-<p>Et enfin, pour les datacenter, on va avoir <a href="https://en.wikipedia.org/wiki/Open_vSwitch" target="_blank">Open vSwitch</a>. Là c&rsquo;est du
-lourd, il faut le voir comme un gros bridge distribué à travers le réseau. C&rsquo;est
-indispensable lorsque l&rsquo;ont veux par exemple faire apparaître deux VMs tournant
+<p>Et enfin, pour les datacenter, on va avoir <a href="https://en.wikipedia.org/wiki/Open_vSwitch" target="_blank">Open vSwitch</a>. Là c'est du
+lourd, il faut le voir comme un gros bridge distribué à travers le réseau. C'est
+indispensable lorsque l'ont veux par exemple faire apparaître deux VMs tournant
 dans deux serveur séparés comme appartenant au même sous-réseau, bon.. Peut-être
-pas indispensable, mais vivement conseillé. C&rsquo;est aussi très bien pour la live
-migration de Xen (transfert d&rsquo;une VM d&rsquo;un serveur à un autre sans coupure). Open
+pas indispensable, mais vivement conseillé. C'est aussi très bien pour la live
+migration de Xen (transfert d'une VM d'un serveur à un autre sans coupure). Open
 vSwitch possède aussi diverses fonctionnalités pour monitorer le réseau dont
-certaine sont spécifique à la virtualisation. &lsquo;fin bref, c&rsquo;est la grosse bêbête
-pour virtualiser son réseau. J&rsquo;ai testé pour voir, ça marche très bien mais ça
-m&rsquo;a paru un peu lourd pour nos besoins. Je ferai peut-être un post dédié un jour
+certaine sont spécifique à la virtualisation. 'fin bref, c'est la grosse bêbête
+pour virtualiser son réseau. J'ai testé pour voir, ça marche très bien mais ça
+m'a paru un peu lourd pour nos besoins. Je ferai peut-être un post dédié un jour
 😉</p>
 
 <h1 id="schéma-en-ascii">Schéma (en ASCII !!)</h1>
@@ -389,56 +389,56 @@ m&rsquo;a paru un peu lourd pour nos besoins. Je ferai peut-être un post dédi�
 </code></pre>
 
 <ul>
-<li><p><strong>Moitié supérieure de la grande boîte</strong>: Il s&rsquo;agit du <em>dom0</em> de <code>hyperion</code>,
+<li><p><strong>Moitié supérieure de la grande boîte</strong>: Il s'agit du <em>dom0</em> de <code>hyperion</code>,
 avec ses 3 interfaces réseau physiques, <code>lan0</code>, <code>inet0</code> et <code>ap0</code> correspondant
-respectivement au réseau local, à la connexion vers l&rsquo;Internet public via la
-&ldquo;box&rdquo; du FAI et à la carte wifi. On y voit aussi les différents <a href="https://en.wikipedia.org/wiki/Bridging_(networking)" target="_blank">bridge</a>
+respectivement au réseau local, à la connexion vers l'Internet public via la
+&quot;box&quot; du FAI et à la carte wifi. On y voit aussi les différents <a href="https://en.wikipedia.org/wiki/Bridging_(networking)" target="_blank">bridge</a>
 nommés <code>brlan0</code>, <code>brinet0</code>, <code>brap0</code>. ces derniers servent de pont entre les
-interfaces physiques et la VM qui s&rsquo;occupera du routage, j&rsquo;ai nommé
+interfaces physiques et la VM qui s'occupera du routage, j'ai nommé
 <code>tethys</code>. Il y a aussi les bridge <code>brdmz0</code>, <code>brcmz0</code> et <code>brcluster0</code>. Ces
 bridges sont là pour émuler les switchs des différents sous-réseaux virtuels
 (plus la dessus plus tard 😉). Et enfin, il y a aussi <code>veth0</code> et <code>veth0-e</code>
-qu&rsquo;il faut imaginer comme un cable réseau virtuel que je branche entre
+qu'il faut imaginer comme un cable réseau virtuel que je branche entre
 <code>brlan0</code> et le dom0 de <code>hyperion</code>, il permet tout simplement à <code>hyperion</code>
-d&rsquo;avoir une connexion réseau (d&rsquo;autre options sont possible ici, mais je
+d'avoir une connexion réseau (d'autre options sont possible ici, mais je
 trouve celle ci élégante et pratique).</p></li>
 
-<li><p><strong>Moitié inférieure de la grande boîte</strong>: C&rsquo;est la zone représentant les
-<em>domUs</em>, là on résideront les VMs. Pour le moment, il n&rsquo;y a que <code>tethys</code> de
+<li><p><strong>Moitié inférieure de la grande boîte</strong>: C'est la zone représentant les
+<em>domUs</em>, là on résideront les VMs. Pour le moment, il n'y a que <code>tethys</code> de
 prévu, ce sera notre routeur/firewall. Ce dernier possédera donc 6 interfaces
 réseau virtuelles nommées <code>lan0</code>, <code>inet0</code>, <code>ap0</code>, <code>dmz0</code>, <code>cmz0</code> et <code>cluster0</code>
 correspondant bien évidement aux bridge auxquels elles sont reliées. Les
 autres futures VMs viendront rejoindre <code>tethys</code> plus tard en prenant soin de
 les connecter au bridge voulu en fonction du sous réseau auquel je voudrai
-qu&rsquo;elle appartiennent.</p></li>
+qu'elle appartiennent.</p></li>
 </ul>
 
 <h1 id="particularité-pour-la-carte-wifi">Particularité pour la carte wifi</h1>
 
 <p>Les drivers linux de carte wifi qui se base sur le module <code>mac80211</code> permettent
 de créer des cartes virtuelles additionnelles. Par exemple, cela permet
-d&rsquo;utiliser à la fois la carte en temps que point d&rsquo;accès et à la fois en temps
+d'utiliser à la fois la carte en temps que point d'accès et à la fois en temps
 que client ordinaire. Il y a aussi le mode <code>IBSS/ad-hoc</code> (connexion directe
 entre deux machines) et le mode <code>mesh</code> qui est comme le mode <code>IBSS</code> mais avec la
 possibilité de router les paquets de machine en machine dans le cas ou la cible
-ne peux pas être atteinte directement. Il s&rsquo;en sont servi au <a href="https://fr.wikipedia.org/wiki/Free_and_open_source_software_developers%27_European_meeting" target="_blank">FOSDEM</a> pour
-étendre le réseau wifi la première fois où j&rsquo;y suis allé.</p>
+ne peux pas être atteinte directement. Il s'en sont servi au <a href="https://fr.wikipedia.org/wiki/Free_and_open_source_software_developers%27_European_meeting" target="_blank">FOSDEM</a> pour
+étendre le réseau wifi la première fois où j'y suis allé.</p>
 
-<p>Dans notre cas, je vais juste créer un carte virtuelle pour le point d&rsquo;accès
-pour le moment. Mais j&rsquo;espère bien m&rsquo;amuser avec les mesh network quand
-l&rsquo;occasion se présentera (et vous aurez droit à un post en prime 😉)</p>
+<p>Dans notre cas, je vais juste créer un carte virtuelle pour le point d'accès
+pour le moment. Mais j'espère bien m'amuser avec les mesh network quand
+l'occasion se présentera (et vous aurez droit à un post en prime 😉)</p>
 
-<p>Je vais expliquer cette partie plus tard, pour l&rsquo;instant, retenez que la carte
-wifi physique s&rsquo;appellera <code>wifi0</code> et la virtuelle, destinée au point d&rsquo;accès
+<p>Je vais expliquer cette partie plus tard, pour l'instant, retenez que la carte
+wifi physique s'appellera <code>wifi0</code> et la virtuelle, destinée au point d'accès
 sera <code>ap0</code>. <code>wifi0</code> restera inutilisée, nous ne nous servirons que des cartes
 virtuelles.</p>
 
 <h1 id="préparatifs">Préparatifs</h1>
 
 <p>On va commencer par renommer les interfaces réseau car de base on est avec des
-<code>eth0</code>, <code>eth1</code> et <code>wlan0</code>. Ça suffirait mais j&rsquo;aime m&rsquo;y retrouver dans mes
-scripts et autres fichiers de configuration, surtout lorsqu&rsquo;il y a autant de
-&ldquo;tuyauterie&rdquo; réseau à gérer. On va tout simplement rajouter des règles <code>udev</code> en
+<code>eth0</code>, <code>eth1</code> et <code>wlan0</code>. Ça suffirait mais j'aime m'y retrouver dans mes
+scripts et autres fichiers de configuration, surtout lorsqu'il y a autant de
+&quot;tuyauterie&quot; réseau à gérer. On va tout simplement rajouter des règles <code>udev</code> en
 se basant sur les adresses MAC des interfaces.</p>
 
 <p>Dans <code>/etc/udev/rules.d/70-persistent-net.rules</code> (à créer si besoin) ajoutez ces
@@ -451,19 +451,19 @@ SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTR{address}==&quot;Adress
 
 <p>Vous pouvez trouver les adresses MAC en tapant <code>ip link</code>.</p>
 
-<p>Ensuite, le plus simple c&rsquo;est de redémarrer la machine.</p>
+<p>Ensuite, le plus simple c'est de redémarrer la machine.</p>
 
 <p>Donc comme expliqué plus haut, ici je nomme les interface <em>physique</em>, pas
-d&rsquo;étonnement de ne pas voir <code>ap0</code> dans la liste car cette interface sera créée
+d'étonnement de ne pas voir <code>ap0</code> dans la liste car cette interface sera créée
 ailleurs dans le processus de boot.</p>
 
-<h1 id="le-déluge-d-interfaces">Le déluge d&rsquo;interfaces !</h1>
+<h1 id="le-déluge-d-interfaces">Le déluge d'interfaces !</h1>
 
 <p>Pour les bridges, il nous faut <code>brctl</code>, un pti coup de <code>apt-get install
-bridge-utils</code> et c&rsquo;est bon.</p>
+bridge-utils</code> et c'est bon.</p>
 
 <p>Il est temps de configurer toute la partie <code>dom0</code> du réseau. Bon bin, le plus
-simple c&rsquo;est que je vous balance le fichier de conf bien commenté.</p>
+simple c'est que je vous balance le fichier de conf bien commenté.</p>
 
 <p>Le fichier <code>/etc/network/interfaces</code> (voir <code>man interfaces</code> pour la syntaxe)</p>
 
@@ -599,28 +599,28 @@ iface veth0-e inet static
 
 <p>Voilà, un petit reboot et toutes ces interfaces devraient apparaître.</p>
 
-<h1 id="dmz-cmz-cluster0-c-est-pourquoi-faire">DMZ, CMZ, cluster0 ? c&rsquo;est pourquoi faire ?</h1>
+<h1 id="dmz-cmz-cluster0-c-est-pourquoi-faire">DMZ, CMZ, cluster0 ? c'est pourquoi faire ?</h1>
 
 <p>Une <a href="https://en.wikipedia.org/wiki/DMZ_(computing)" target="_blank">DMZ</a> est un sous réseau contenant les services accessibles depuis
-l&rsquo;extérieur comme les serveurs de mail ou les serveurs web public. L&rsquo;idée est
-d&rsquo;avoir une zone où la confiance envers les clients qui s&rsquo;y connectent est toute
+l'extérieur comme les serveurs de mail ou les serveurs web public. L'idée est
+d'avoir une zone où la confiance envers les clients qui s'y connectent est toute
 relative et de paramétrer le firewall en conséquence.</p>
 
-<p>Une CMZ est censée contenir les données sensible d&rsquo;une organisation qui n&rsquo;aurait
+<p>Une CMZ est censée contenir les données sensible d'une organisation qui n'aurait
 pas leur place dans le réseau local normal. A vrai dire, il est clair que nous
-n&rsquo;en avons pas besoin chez nous, mais comme je disais, faire mumuse avec les
-réseau, j&rsquo;adore ça :-D</p>
+n'en avons pas besoin chez nous, mais comme je disais, faire mumuse avec les
+réseau, j'adore ça :-D</p>
 
 <p>Et cluster0 sera un autre sous réseau destiné à tester <a href="https://en.wikipedia.org/wiki/Apache_Hadoop" target="_blank">Hadoop</a>.</p>
 
 <p>Note: En réalité, le sous réseau a été intégré bien plus tard après la création
-de Hyperion mais je l&rsquo;ai mis ici pour ajouter un peu de piments.</p>
+de Hyperion mais je l'ai mis ici pour ajouter un peu de piments.</p>
 
-<h1 id="point-d-accès-wifi">Point d&rsquo;accès wifi</h1>
+<h1 id="point-d-accès-wifi">Point d'accès wifi</h1>
 
-<p>Nous avons les interfaces mais le point d&rsquo;accès wifi est actuellement non
+<p>Nous avons les interfaces mais le point d'accès wifi est actuellement non
 fonctionnel car il nous faut un daemon pour gérer les authentifications
-WPA2. Très franchement, j&rsquo;aurais aimé pouvoir placer ce daemon dans une VM mais
+WPA2. Très franchement, j'aurais aimé pouvoir placer ce daemon dans une VM mais
 malheureusement, sans IOMMU, je ne peux pas déléguer la carte wifi à une VM et
 ce service devra tourner sur hyperion. On va faire ça avec <code>hostapd</code> (<code>apt-get
 install hostapd</code>)</p>
@@ -654,12 +654,12 @@ wpa_key_mgmt=WPA-PSK
 wpa_pairwise=TKIP CCMP
 </code></pre>
 
-<p>Suivi d&rsquo;un <code>service hostapd restart</code> et on est bon ;-)</p>
+<p>Suivi d'un <code>service hostapd restart</code> et on est bon ;-)</p>
 
 <h1 id="un-dernier-réglage-xen">Un dernier réglage Xen</h1>
 
 <p>Maintenant que nous avons nos bridges, un petit ajustement dans la configuration
-de Xen s&rsquo;impose.</p>
+de Xen s'impose.</p>
 
 <p>Dans <code>/etc/xen/xl.conf</code> modifiez ces paramètres:</p>
 

@@ -232,7 +232,7 @@ du système et mise en place de la virtualisation">
 
 
 
-<meta itemprop="keywords" content="administration,big-data,hyperion,admin,bigdata,bridge,debian,hadoop,hardware,linux,network,xen," />
+<meta itemprop="keywords" content="administration,big-data,coding,hyperion,admin,bigdata,bridge,debian,git,github-pages,hadoop,hardware,hugo,linux,makefile,network,xen," />
 
     <header>
       <h1 itemprop="headline">Hyperion, routeur tout-en-un: Round 1 - Xen</h1>
@@ -293,30 +293,30 @@ du système et mise en place de la virtualisation</blockquote>
 
 <p>Je rappelle donc les objectifs définis lors du <a href="/post/hyperion-part-1/">précédant post</a>:
 construire un routeur/firewall/serveur de dev/double media center à moindre
-coûts et avec le maximum de sécurité. Pour ce faire, j&rsquo;ai prévu de faire le plus
-de récup possible dans mes 3 étagères bourrées de pièces d&rsquo;ordi.</p>
+coûts et avec le maximum de sécurité. Pour ce faire, j'ai prévu de faire le plus
+de récup possible dans mes 3 étagères bourrées de pièces d'ordi.</p>
 
 <h1 id="mes-trouvailles">Mes trouvailles</h1>
 
 <ul>
-<li><p>Une <a href="https://www.msi.com/Motherboard/B75MA-E33.html" target="_blank">MSI B75MA-E33</a> avec un <a href="http://ark.intel.com/products/71072/Intel-Celeron-Processor-G1610-2M-Cache-2_60-GHz" target="_blank">Celeron G1610</a>.  Avec ça j&rsquo;aurais
-1 port SATA 6Gbps, 3 ports SATA 3Gbps (ça suffira amplement vu que l&rsquo;entonnoir
-ici sera l&rsquo;ethernet), USB3, Ethernet 1Gbps, Intel Graphic HD inclu dans le
+<li><p>Une <a href="https://www.msi.com/Motherboard/B75MA-E33.html" target="_blank">MSI B75MA-E33</a> avec un <a href="http://ark.intel.com/products/71072/Intel-Celeron-Processor-G1610-2M-Cache-2_60-GHz" target="_blank">Celeron G1610</a>.  Avec ça j'aurais
+1 port SATA 6Gbps, 3 ports SATA 3Gbps (ça suffira amplement vu que l'entonnoir
+ici sera l'ethernet), USB3, Ethernet 1Gbps, Intel Graphic HD inclu dans le
 processeur et un port HDMI (sur les deux nécessaires).</p></li>
 
 <li><p>Une barrette DDR3 de 4GB. Ça sera déjà un bon début (la virtualisation, ça a
-besoin de RAM 😉), on verra pour d&rsquo;éventuels ajouts plus tard.</p></li>
+besoin de RAM 😉), on verra pour d'éventuels ajouts plus tard.</p></li>
 
-<li><p>Une <a href="http://www.geforce.com/hardware/desktop-gpus/geforce-gt-620" target="_blank">NVIDIA Geforce GT620</a> qui va me permettre d&rsquo;obtenir mon deuxième
+<li><p>Une <a href="http://www.geforce.com/hardware/desktop-gpus/geforce-gt-620" target="_blank">NVIDIA Geforce GT620</a> qui va me permettre d'obtenir mon deuxième
 port HDMI.</p></li>
 
 <li><p>Une carte Ethernet 1Gbps <a href="http://www.tp-link.com/baltic/products/details/cat-11_TG-3468.html" target="_blank">TpLink TG-3468</a>. Bé oui, va bien falloir
 que les paquets réseaux ressortent quelques part.</p></li>
 
 <li><p>Une vieille carte wifi PCI (Qualcomm Atheros AR2413/AR2414 Wireless Network
-Adapter). Ça nous fera l&rsquo;Access Point Wifi. Bon c&rsquo;est du 802.11bg, c&rsquo;est un
-peu faible, mais c&rsquo;est gratuit et il y avait ce port PCI à utiliser sur la
-carte mère. Ça nous suffira, pour nous le wifi c&rsquo;est uniquement de la
+Adapter). Ça nous fera l'Access Point Wifi. Bon c'est du 802.11bg, c'est un
+peu faible, mais c'est gratuit et il y avait ce port PCI à utiliser sur la
+carte mère. Ça nous suffira, pour nous le wifi c'est uniquement de la
 navigation internet, on verra plus tard pour évoluer.</p></li>
 
 <li><p>Quatre disques durs SATA de 3TB, 1TB, 500GB et 320GB.</p></li>
@@ -329,7 +329,7 @@ navigation internet, on verra plus tard pour évoluer.</p></li>
 <p>Alors je regrette de ne pas avoir fait de photo pendant le montage, je vous
 aurais fait un petit roman photo xD</p>
 
-<p>Je n&rsquo;ai donc que des photos prises à la va vite alors que la machine est
+<p>Je n'ai donc que des photos prises à la va vite alors que la machine est
 complètement finie.</p>
 
 <div class="group">
@@ -366,25 +366,25 @@ complètement finie.</p>
 </figure>
 </div>
 
-<p>Bon rien de vraiment fantastique, en même temps, j&rsquo;ai rien eu à acheter, c&rsquo;est
+<p>Bon rien de vraiment fantastique, en même temps, j'ai rien eu à acheter, c'est
 tout de la récup. Ceci dit, maintenant que je sais que ça marche bien, ça va
 devenir le pilier du réseau et la prochaine version sera plein plus étudiée à
-tous les niveaux (si si, y compris l&rsquo;esthétisme 😉).</p>
+tous les niveaux (si si, y compris l'esthétisme 😉).</p>
 
 <h1 id="installation-du-système-de-base">Installation du système de base</h1>
 
 <p>Évidement, mon choix pour la distribution va automatiquement
-à <a href="http://www.debian.org" target="_blank">Debian</a>. C&rsquo;est stable, connu et ce fût longtemps ma distribution pour
+à <a href="http://www.debian.org" target="_blank">Debian</a>. C'est stable, connu et ce fût longtemps ma distribution pour
 mes machines desktop. À vrai dire, maintenant, je préfère <a href="http://www.archlinux.org" target="_blank">Arch Linux</a> pour le
-desktop, mais je continue d&rsquo;utiliser Debian pour mes serveurs.</p>
+desktop, mais je continue d'utiliser Debian pour mes serveurs.</p>
 
-<p>Je vous passe l&rsquo;installation du système de base, on trouve des <a href="https://www.debian.org/releases/stable/i386/index.html.fr" target="_blank">tutorials</a> partout
+<p>Je vous passe l'installation du système de base, on trouve des <a href="https://www.debian.org/releases/stable/i386/index.html.fr" target="_blank">tutorials</a> partout
 sur le net pour ça. Je vais juste faire quelques mots sur les choix de
 partitionnement:</p>
 
 <ul>
 <li><p>Le <em>3TB</em> possède déjà son partitionnement: 1 seule partition ext4 avec des
-données à conserver dedans. J&rsquo;y ai pas touché durant l&rsquo;installation.</p></li>
+données à conserver dedans. J'y ai pas touché durant l'installation.</p></li>
 
 <li><p>Le <em>1TB</em> est partitionné pour accueillir le système:</p></li>
 </ul>
@@ -432,57 +432,57 @@ données à conserver dedans. J&rsquo;y ai pas touché durant l&rsquo;installati
 </ul>
 
 <p>Comme vous voyez, on reste extrêmement simpliste dans le partitionnement. Au
-moment de l&rsquo;installation, je n&rsquo;étais pas sûr que tout ce que je voulais faire
+moment de l'installation, je n'étais pas sûr que tout ce que je voulais faire
 fonctionnerait. Je modifierai au besoin plus tard, il reste plein de place
 partout de toute façon. 😄</p>
 
-<p>Et non, je n&rsquo;ai pas mis de RAID, j&rsquo;en avais envie mais je ne voulais pas perdre
-d&rsquo;espace, et certains disques sont de vieux machins plutôt lents. Un jour je
-referai ça avec de gros disques neufs, le RAID6, btrfs, etc&hellip; Puis bon, c&rsquo;est
+<p>Et non, je n'ai pas mis de RAID, j'en avais envie mais je ne voulais pas perdre
+d'espace, et certains disques sont de vieux machins plutôt lents. Un jour je
+referai ça avec de gros disques neufs, le RAID6, btrfs, etc... Puis bon, c'est
 pas une machine destinée à faire de la haute disponibilité. Je rappelle que les
-RAID ce n&rsquo;est pas du tout une backup, et si mon système de backup marche comme
+RAID ce n'est pas du tout une backup, et si mon système de backup marche comme
 prévu, en cas de panne, ce sera rapidement remis en ligne.</p>
 
 <h1 id="installation-de-xen">Installation de Xen</h1>
 
 <p>Bon, on a un système de base correct, passons à <a href="https://en.wikipedia.org/wiki/Xen" target="_blank">Xen</a>.</p>
 
-<p>Petit topo sur Xen: Il s&rsquo;agit d&rsquo;un hyperviseur de virtualisation qui tourne sous
-la forme d&rsquo;un micro kernel léger (moins de 1M de RAM). L&rsquo;avantage par apport à
-d&rsquo;autre solution comme <a href="https://en.wikipedia.org/wiki/VMware" target="_blank">VMware</a>, <a href="https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine" target="_blank">KVM</a> (<a href="https://en.wikipedia.org/wiki/QEMU" target="_blank">qemu</a>) ou <a href="https://en.wikipedia.org/wiki/VirtualBox" target="_blank">VirtualBox</a>, c&rsquo;est
+<p>Petit topo sur Xen: Il s'agit d'un hyperviseur de virtualisation qui tourne sous
+la forme d'un micro kernel léger (moins de 1M de RAM). L'avantage par apport à
+d'autre solution comme <a href="https://en.wikipedia.org/wiki/VMware" target="_blank">VMware</a>, <a href="https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine" target="_blank">KVM</a> (<a href="https://en.wikipedia.org/wiki/QEMU" target="_blank">qemu</a>) ou <a href="https://en.wikipedia.org/wiki/VirtualBox" target="_blank">VirtualBox</a>, c'est
 que Xen permet de fonctionner en mode paravirtualisé (Nommé <strong>PV</strong> sous Xen),
-c-à-d qu&rsquo;il n&rsquo;a pas besoin des instructions de virtualisation incluses dans les
-processeurs récents ce qui permet une plus grande vitesse d&rsquo;exécution.</p>
+c-à-d qu'il n'a pas besoin des instructions de virtualisation incluses dans les
+processeurs récents ce qui permet une plus grande vitesse d'exécution.</p>
 
 <p>Il effectue cela en utilisant les <a href="https://en.wikipedia.org/wiki/Protection_ring" target="_blank">protection rings</a> des processeurs x86:
-Le microkernel Xen tourne en Ring 0 (le plus haut niveau), le kernel de l&rsquo;OS
-(linux) tourne en Ring 1, et enfin les processus de l&rsquo;espace utilisateur des
+Le microkernel Xen tourne en Ring 0 (le plus haut niveau), le kernel de l'OS
+(linux) tourne en Ring 1, et enfin les processus de l'espace utilisateur des
 différentes VMs tournent en Ring 2. Ceci nécessite que le kernel des machines
-invitées soit modifié pour le gérer (aucun soucis pour le kernel linux, c&rsquo;est
+invitées soit modifié pour le gérer (aucun soucis pour le kernel linux, c'est
 déjà inclus).</p>
 
 <p>Xen supporte aussi le mode virtualisé complet (nommé <strong>HVM</strong> dans Xen), utile
 pour les OS ne supportant pas le mode PV (comme Windows).</p>
 
 <p>Il possède aussi un mode hybride, mixant HVM pour le kernel invité, et PV pour
-les périphériques (via l&rsquo;installation de driver, sous Windows notamment). Cela
+les périphériques (via l'installation de driver, sous Windows notamment). Cela
 permet un gain en vitesse bien évidement.</p>
 
 <p>Autre chose, les machine virtuelles sous Xen sont nommées <strong>virtual domain</strong>, il
 y en a deux types: le dom0 et les domU.</p>
 
 <ul>
-<li>Le dom0 c&rsquo;est la machine qui gère Xen et qui a un accès physique aux
-périphériques, On vient de l&rsquo;installer ;)</li>
+<li>Le dom0 c'est la machine qui gère Xen et qui a un accès physique aux
+périphériques, On vient de l'installer ;)</li>
 <li>Les domU sont les machines invitées qui ont accès à des périphériques
 virtualisés, on verra comment en ajouter plus tard 😉</li>
 </ul>
 
-<p>Xen permet aussi de <a href="https://wiki.xen.org/wiki/Xen_PCI_Passthrough" target="_blank">PCI passthrough</a> qui permet de &ldquo;donner&rdquo; un
-périphérique PCI à un domU, c&rsquo;est plutôt génial pour ce que j&rsquo;ai envie de
+<p>Xen permet aussi de <a href="https://wiki.xen.org/wiki/Xen_PCI_Passthrough" target="_blank">PCI passthrough</a> qui permet de &quot;donner&quot; un
+périphérique PCI à un domU, c'est plutôt génial pour ce que j'ai envie de
 faire. Malheureusement, ma carte mère actuelle ne le permet pas (pas
-de <a href="https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit" target="_blank">IOMMU</a>). Pas grave, on fera tourner Kodi directement sur le dom0, c&rsquo;est
-pas super pour la sécurité, mais je n&rsquo;est pas le choix. La prochaine carte mère
+de <a href="https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit" target="_blank">IOMMU</a>). Pas grave, on fera tourner Kodi directement sur le dom0, c'est
+pas super pour la sécurité, mais je n'est pas le choix. La prochaine carte mère
 sera meilleure ;)</p>
 
 <p>Allons-y:</p>
@@ -490,7 +490,7 @@ sera meilleure ;)</p>
 <pre><code class="language-sh">apt-get install xen-system-amd64 xen-tools 
 </code></pre>
 
-<p>Ensuite il faut redéfinir l&rsquo;ordre de boot pour GRUB, par défaut il continue de
+<p>Ensuite il faut redéfinir l'ordre de boot pour GRUB, par défaut il continue de
 booter sur le système normal. Il suffit de renommer un fichier pour cela, mais
 on va utilisé <code>dpkg-divert</code> pour que les mises à jour système de changent pas
 nos réglages:</p>
@@ -502,17 +502,17 @@ nos réglages:</p>
 droit à toute la mémoire, et Xen ajuste cela en cas de besoin pour les domU en
 utilisant une technique appelée le <a href="https://www.quora.com/Virtualization-What-is-memory-ballooning" target="_blank">memory ballooning</a>.</p>
 
-<p>Techniquement, il &ldquo;vole&rdquo; de la mémoire inutilisé d&rsquo;un ou plusieurs dom pour la
-passer à un autre. C&rsquo;est très efficace pour économiser sur les barrettes de RAM,
-car sur tout un datacenter de virtualisation c&rsquo;est quasi impossible que toutes
+<p>Techniquement, il &quot;vole&quot; de la mémoire inutilisé d'un ou plusieurs dom pour la
+passer à un autre. C'est très efficace pour économiser sur les barrettes de RAM,
+car sur tout un datacenter de virtualisation c'est quasi impossible que toutes
 les VMs utilisent toute la mémoire qui leur a été attribuée. Par contre, dans le
-cas où il y a vraiment un gros besoin en RAM sur toutes les VMs, &hellip; Bin ça va
-poser problème&hellip;</p>
+cas où il y a vraiment un gros besoin en RAM sur toutes les VMs, ... Bin ça va
+poser problème...</p>
 
-<p>Personnellement, J&rsquo;ai choisi de plutôt créer des VMs avec juste ce qu&rsquo;il faut de
+<p>Personnellement, J'ai choisi de plutôt créer des VMs avec juste ce qu'il faut de
 RAM sans ballooning et elles utiliserons leur SWAP si besoin. Les VMs seront
 surtout des services réseaux, ayant une utilisation mémoire assez stable, en
-général 128M ou 256M suffira. C&rsquo;est parfait pour mes besoins.</p>
+général 128M ou 256M suffira. C'est parfait pour mes besoins.</p>
 
 <p>Donc, réduisons la RAM pour le dom0, dans le fichier <code>/etc/default/grub</code> ajoutez
 cette ligne:</p>
@@ -520,20 +520,20 @@ cette ligne:</p>
 <pre><code class="language-sh">GRUB_CMDLINE_XEN_DEFAULT=&quot;dom0_mem=1536M&quot;
 </code></pre>
 
-<p>Alors oui, 1.5G c&rsquo;est beaucoup trop pour un simple dom0, 128M aurait
-probablement suffit mais j&rsquo;ai prévu un usage annexe pour le dom0, faire tourner
+<p>Alors oui, 1.5G c'est beaucoup trop pour un simple dom0, 128M aurait
+probablement suffit mais j'ai prévu un usage annexe pour le dom0, faire tourner
 deux Kodi en multiseat.</p>
 
-<p>Il n&rsquo;y a plus qu&rsquo;a faire:</p>
+<p>Il n'y a plus qu'a faire:</p>
 
 <pre><code class="language-sh">update-grub
 reboot
 </code></pre>
 
-<p>Voilà, si tout s&rsquo;est bien passé, la machine tourne sous Xen, dans son dom0. Vous
+<p>Voilà, si tout s'est bien passé, la machine tourne sous Xen, dans son dom0. Vous
 pouvez faire <code>free</code> et vérifier que la mémoire disponible est bien de 1.5G.</p>
 
-<p>Dans les outils de monitoring Xen, on trouve <code>xentop</code>, c&rsquo;est comme <code>top</code> mais
+<p>Dans les outils de monitoring Xen, on trouve <code>xentop</code>, c'est comme <code>top</code> mais
 pour les VMs.</p>
 
 <h1 id="lvm">LVM</h1>
@@ -541,7 +541,7 @@ pour les VMs.</p>
 <p>On a pas parlé du lieu où serait stocké les images disque des VMs. Pour ça il
 existe <a href="https://wiki.xen.org/wiki/Storage_options" target="_blank">plusieurs solutions</a> avec Xen. On peut utiliser des fichiers
 basiques comme on le ferait avec VirtualBox (.raw, .qcow2 ou .vhd supporté), des
-stockages distants comme <a href="https://en.wikipedia.org/wiki/Network_File_System" target="_blank">NFS</a> et <a href="https://en.wikipedia.org/wiki/ISCSI" target="_blank">iSCSI</a>, ou <a href="https://en.wikipedia.org/wiki/Logical_volume_management" target="_blank">LVM</a>, c&rsquo;est ce dernier que
+stockages distants comme <a href="https://en.wikipedia.org/wiki/Network_File_System" target="_blank">NFS</a> et <a href="https://en.wikipedia.org/wiki/ISCSI" target="_blank">iSCSI</a>, ou <a href="https://en.wikipedia.org/wiki/Logical_volume_management" target="_blank">LVM</a>, c'est ce dernier que
 nous utiliserons. Les stockages distants vont être particulièrement utiles en
 cas de datacenter de virtualisation. Ils permettent
 la <a href="https://wiki.xenproject.org/wiki/Migration" target="_blank">live migration</a> des VMs de serveur en serveur.</p>
@@ -550,14 +550,14 @@ la <a href="https://wiki.xenproject.org/wiki/Migration" target="_blank">live mig
 
 <dl>
 <dt>PV</dt>
-<dd>Physical Volume, Il s&rsquo;agit tout simplement d&rsquo;une partition avec le type <code>0x8E</code>
+<dd>Physical Volume, Il s'agit tout simplement d'une partition avec le type <code>0x8E</code>
 et une entête spécifique à LVM pour que le système le reconnaisse.</dd>
 <dt>VG</dt>
-<dd>Volume Group, Il s&rsquo;agit d&rsquo;un groupe de <code>PVs</code> utilisable pour créer des
-<code>LV</code>. Comme on peut le deviner, un <code>VG</code> peut s&rsquo;étendre sur plusieurs disques, un
+<dd>Volume Group, Il s'agit d'un groupe de <code>PVs</code> utilisable pour créer des
+<code>LV</code>. Comme on peut le deviner, un <code>VG</code> peut s'étendre sur plusieurs disques, un
 peu comme le fait le <code>RAID 0</code>.</dd>
 <dt>LV</dt>
-<dd>Logical Volume, c&rsquo;est une partition utilisable par <code>mkfs</code>, comme le serait
+<dd>Logical Volume, c'est une partition utilisable par <code>mkfs</code>, comme le serait
 <code>/dev/sda1</code>. Elle utilise tout ou une fraction du <code>VG</code> auquel elle appartient.</dd>
 </dl>
 
@@ -570,30 +570,30 @@ peu comme le fait le <code>RAID 0</code>.</dd>
 
 <h2 id="partitionnement">Partitionnement</h2>
 
-<p>J&rsquo;ai choisi de créer un <code>VG</code> utilisant un unique <code>PV</code> situé sur une partition
+<p>J'ai choisi de créer un <code>VG</code> utilisant un unique <code>PV</code> situé sur une partition
 qui prendra tout le disque de 500G.</p>
 
-<p>Personnellement, j&rsquo;aime utiliser <code>cfdisk</code> ou parfois <code>fdisk</code>, à vous de voir
-lequel vous préférez. Pensez bien à mettre le type <code>8E</code>, ce n&rsquo;est pas
+<p>Personnellement, j'aime utiliser <code>cfdisk</code> ou parfois <code>fdisk</code>, à vous de voir
+lequel vous préférez. Pensez bien à mettre le type <code>8E</code>, ce n'est pas
 indispensable car LVM scan les partitions au boot peu importe leur type mais un
-peu de &ldquo;good practice&rdquo;, ça fait pas de mal.</p>
+peu de &quot;good practice&quot;, ça fait pas de mal.</p>
 
 <h2 id="création-du-vg">Création du VG</h2>
 
 <p>Franchement, les commandes LVM sont très agréables à utiliser, simple et propre
-avec des pages de man claires. C&rsquo;est pas toujours comme ça malheureusement.</p>
+avec des pages de man claires. C'est pas toujours comme ça malheureusement.</p>
 
-<p>Alors, c&rsquo;est super simple:</p>
+<p>Alors, c'est super simple:</p>
 
 <pre><code class="language-sh">vgcreate vg0 /dev/sdc1
 </code></pre>
 
-<p>Et c&rsquo;est tout xD</p>
+<p>Et c'est tout xD</p>
 
 <p><code>vgcreate</code> va de lui même appeler <code>pvcreate</code> pour initialiser la partition et en
-faire un <code>PV</code>, et ensuite l&rsquo;ajouter au nouveau <code>VG</code> nommé <code>vg0</code>.</p>
+faire un <code>PV</code>, et ensuite l'ajouter au nouveau <code>VG</code> nommé <code>vg0</code>.</p>
 
-<p>On peut regarder l&rsquo;état des <code>PVs</code>, <code>VGs</code> et <code>LVs</code> avec <code>pvs</code>, <code>vgs</code> et <code>lvs</code>:</p>
+<p>On peut regarder l'état des <code>PVs</code>, <code>VGs</code> et <code>LVs</code> avec <code>pvs</code>, <code>vgs</code> et <code>lvs</code>:</p>
 
 <pre><code class="language-sh">14:39 root@hyperion /etc/xen # pvs        
   PV         VG   Fmt  Attr PSize   PFree  
@@ -611,16 +611,16 @@ faire un <code>PV</code>, et ensuite l&rsquo;ajouter au nouveau <code>VG</code> 
   tethys-swap vg0  -wi-ao---- 128.00m
 </code></pre>
 
-<p>Vous pouvez voir que j&rsquo;ai déjà quelques <code>LVs</code>. Dans tout les cas, je vous
-suggère d&rsquo;aller lire d&rsquo;avantage sur LVM, par exemple <a href="https://wiki.archlinux.org/index.php/LVM" target="_blank">ici</a>. Je ferai
+<p>Vous pouvez voir que j'ai déjà quelques <code>LVs</code>. Dans tout les cas, je vous
+suggère d'aller lire d'avantage sur LVM, par exemple <a href="https://wiki.archlinux.org/index.php/LVM" target="_blank">ici</a>. Je ferai
 peut-être un post complet dessus un jour ;-)</p>
 
 <h1 id="la-suite">La suite</h1>
 
-<p>Au <a href="/post/hyperion-part-3/">prochain post</a>, on s&rsquo;occupera du réseau. Il va falloir tout un post
-pour ça vu la complexité. Je vous rassure, de base, avec Xen c&rsquo;est très simple,
-un <a href="https://en.wikipedia.org/wiki/Bridging_(networking)" target="_blank">bridge</a> et c&rsquo;est bon. Mais je veux que le routeur/firewall soit virtualisé
-et il faut s&rsquo;occuper du point d&rsquo;accès wifi aussi, donc un post complet ce sera
+<p>Au <a href="/post/hyperion-part-3/">prochain post</a>, on s'occupera du réseau. Il va falloir tout un post
+pour ça vu la complexité. Je vous rassure, de base, avec Xen c'est très simple,
+un <a href="https://en.wikipedia.org/wiki/Bridging_(networking)" target="_blank">bridge</a> et c'est bon. Mais je veux que le routeur/firewall soit virtualisé
+et il faut s'occuper du point d'accès wifi aussi, donc un post complet ce sera
 pas de trop.</p>
 
     </div>
