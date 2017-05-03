@@ -4,10 +4,10 @@
     <meta name="generator" content="Hugo 0.21-DEV" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hyperion, routeur tout-en-un: Round 1 - Xen | Xakz&#39;s</title>
-    <meta name="description" content="Montage de la bête, installation 
-du système et mise en place de la virtualisation">
-    <meta name="keywords" content="linux, xen, admin, hardware, network">
+    <title>Hyperion, routeur tout-en-un: Round 3 - Tethys | Xakz&#39;s</title>
+    <meta name="description" content="Création de la première VM - notre routeur/firewall
+">
+    <meta name="keywords" content="linux, xen, admin, network, dnsmasq">
     
     
     
@@ -17,16 +17,16 @@ du système et mise en place de la virtualisation">
   <meta name="author" content="Xakz">
 
 
-    <meta property="og:title" content="Hyperion, routeur tout-en-un: Round 1 - Xen" />
-<meta property="og:description" content="Montage de la bête, installation 
-du système et mise en place de la virtualisation" />
+    <meta property="og:title" content="Hyperion, routeur tout-en-un: Round 3 - Tethys" />
+<meta property="og:description" content="Création de la première VM - notre routeur/firewall
+" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://xakz.github.io/post/hyperion-part-2/" />
+<meta property="og:url" content="http://xakz.github.io/post/hyperion-part-4/" />
 
 
 
-<meta property="article:published_time" content="2016-01-18T18:23:54&#43;02:00"/>
-<meta property="article:modified_time" content="2016-01-18T18:23:54&#43;02:00"/>
+<meta property="article:published_time" content="2016-01-29T09:33:12&#43;02:00"/>
+<meta property="article:modified_time" content="2016-01-29T09:33:12&#43;02:00"/>
 
 
 
@@ -48,12 +48,12 @@ du système et mise en place de la virtualisation" />
     
     
     
-    <link rel="canonical" href="http://xakz.github.io/post/hyperion-part-2/">
+    <link rel="canonical" href="http://xakz.github.io/post/hyperion-part-4/">
     
-      <link rel="prev" href="/post/hyperion-part-1/">
+      <link rel="prev" href="/post/hyperion-part-3/">
     
     
-      <link rel="next" href="/post/hyperion-part-3/">
+      <link rel="next" href="/post/hyperion-part-5/">
     
     <link rel="icon" sizes="any" href="data:image/svg+xml,%3Csvg%20viewBox='0%200%2046%2045'%20xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3EAfter%20Dark%3C/title%3E%3Cpath%20d='M.708%2045L23%20.416%2045.292%2045H.708zM35%2038L23%2019%2011%2038h24z'%20fill='%23000'/%3E%3C/svg%3E">
 
@@ -222,53 +222,50 @@ figure:hover:before { opacity: 0; }
     <main>
   <article itemscope itemtype="http://schema.org/BlogPosting">
     
-<meta itemprop="name" content="Hyperion, routeur tout-en-un: Round 1 - Xen">
-<meta itemprop="description" content="Montage de la bête, installation 
-du système et mise en place de la virtualisation">
+<meta itemprop="name" content="Hyperion, routeur tout-en-un: Round 3 - Tethys">
+<meta itemprop="description" content="Création de la première VM - notre routeur/firewall
+">
 
 
-<meta itemprop="dateModified" content="2016-01-18T18:23:54&#43;02:00" />
-<meta itemprop="wordCount" content="1804">
+<meta itemprop="dateModified" content="2016-01-29T09:33:12&#43;02:00" />
+<meta itemprop="wordCount" content="1357">
 
 
 
 <meta itemprop="keywords" content="administration,big-data,coding,hyperion,admin,bigdata,bridge,debian,dnsmasq,git,github-pages,hadoop,hardware,hugo,linux,makefile,network,xen," />
 
     <header>
-      <h1 itemprop="headline">Hyperion, routeur tout-en-un: Round 1 - Xen</h1>
+      <h1 itemprop="headline">Hyperion, routeur tout-en-un: Round 3 - Tethys</h1>
       <p class="muted"><svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
   <circle cx="16" cy="16" r="14" />
   <path d="M16 8 L16 16 20 20" />
 </svg>
-<span>9 minute read</span>
+<span>7 minute read</span>
 <svg style="margin-bottom: -3px" class="i-edit" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
   <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
 </svg>
 
-  Published: <time datetime="2016-01-18T18:23:54&#43;02:00">18 Jan, 2016</time>
+  Published: <time datetime="2016-01-29T09:33:12&#43;02:00">29 Jan, 2016</time>
 
 </p>
     </header>
     
-      <blockquote itemprop="description">Montage de la bête, installation 
-du système et mise en place de la virtualisation</blockquote>
+      <blockquote itemprop="description">Création de la première VM - notre routeur/firewall
+</blockquote>
     
     
   <details>
     <summary>Table of Contents</summary>
     <nav id="TableOfContents">
 <ul>
-<li><a href="#mes-trouvailles">Mes trouvailles</a></li>
-<li><a href="#photos">Photos</a></li>
-<li><a href="#installation-du-système-de-base">Installation du système de base</a></li>
-<li><a href="#installation-de-xen">Installation de Xen</a></li>
-<li><a href="#lvm">LVM</a>
-<ul>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#partitionnement">Partitionnement</a></li>
-<li><a href="#création-du-vg">Création du VG</a></li>
-</ul></li>
-<li><a href="#la-suite">La suite</a></li>
+<li><a href="#xen-create-image">xen-create-image</a></li>
+<li><a href="#petits-ajustements">Petits ajustements</a></li>
+<li><a href="#premier-boot">Premier boot</a></li>
+<li><a href="#configuration-réseau">Configuration réseau</a></li>
+<li><a href="#init">Init</a></li>
+<li><a href="#routage-et-nat">routage et NAT</a></li>
+<li><a href="#dns-et-dhcp">DNS et DHCP</a></li>
+<li><a href="#le-prochain-post">Le prochain post</a></li>
 </ul>
 </nav>
   </details>
@@ -289,342 +286,372 @@ du système et mise en place de la virtualisation</blockquote>
 
 
     <div itemprop="articleBody">
-      <p>Je rappelle donc les objectifs définis lors du <a href="/post/hyperion-part-1/">précédant post</a>:
-construire un routeur/firewall/serveur de dev/double media center à moindre
-coûts et avec le maximum de sécurité. Pour ce faire, j'ai prévu de faire le plus
-de récup possible dans mes 3 étagères bourrées de pièces d'ordi.</p>
-
-<h1 id="mes-trouvailles">Mes trouvailles</h1>
-
-<ul>
-<li>Une <a href="https://www.msi.com/Motherboard/B75MA-E33.html" target="_blank">MSI B75MA-E33</a> avec un <a href="http://ark.intel.com/products/71072/Intel-Celeron-Processor-G1610-2M-Cache-2_60-GHz" target="_blank">Celeron G1610</a>.  Avec ça j'aurais
-1 port SATA 6Gbps, 3 ports SATA 3Gbps (ça suffira amplement vu que l'entonnoir
-ici sera l'ethernet), USB3, Ethernet 1Gbps, Intel Graphic HD inclu dans le
-processeur et un port HDMI (sur les deux nécessaires).
-<br /></li>
-</ul>
+      <p>Voilà, toute la tuyauterie coté dom0 est en place, il nous faut maintenant créer
+le domU du routeur-firewall, nommé <code>tethys</code>.</p>
 
 <p></p>
 
-<ul>
-<li><p>Une barrette DDR3 de 4GB. Ça sera déjà un bon début (la virtualisation, ça a
-besoin de RAM 😉), on verra pour d'éventuels ajouts plus tard.</p></li>
+<h1 id="xen-create-image">xen-create-image</h1>
 
-<li><p>Une <a href="http://www.geforce.com/hardware/desktop-gpus/geforce-gt-620" target="_blank">NVIDIA Geforce GT620</a> qui va me permettre d'obtenir mon deuxième
-port HDMI.</p></li>
+<p>Xen est fourni avec une série d'outils pour faciliter la mise en place de VMs
+(paquet <code>xen-tools</code>), utilisons les !</p>
 
-<li><p>Une carte Ethernet 1Gbps <a href="http://www.tp-link.com/baltic/products/details/cat-11_TG-3468.html" target="_blank">TpLink TG-3468</a>. Bé oui, va bien falloir
-que les paquets réseaux ressortent quelques part.</p></li>
-
-<li><p>Une vieille carte wifi PCI (Qualcomm Atheros AR2413/AR2414 Wireless Network
-Adapter). Ça nous fera l'Access Point Wifi. Bon c'est du 802.11bg, c'est un
-peu faible, mais c'est gratuit et il y avait ce port PCI à utiliser sur la
-carte mère. Ça nous suffira, pour nous le wifi c'est uniquement de la
-navigation internet, on verra plus tard pour évoluer.</p></li>
-
-<li><p>Quatre disques durs SATA de 3TB, 1TB, 500GB et 320GB.</p></li>
-
-<li><p>Et bien sûr un boîtier qui va bien avec une alimentation 400W.</p></li>
-</ul>
-
-<h1 id="photos">Photos</h1>
-
-<p>Alors je regrette de ne pas avoir fait de photo pendant le montage, je vous
-aurais fait un petit roman photo xD</p>
-
-<p>Je n'ai donc que des photos prises à la va vite alors que la machine est
-complètement finie.</p>
-
-<div class="group">
-<figure class="cap-top" style="width:49%">
- <img src="/img/hyperion.inside.jpg" alt="Intérieur d'Hyperion">
- <figcaption>
-  Hyperion, monté et en fonctionnement. Faites pas attention à la poussière ;)
- </figcaption>
-</figure>
-<figure class="cap-top" style="width:49%">
- <img src="/img/hyperion.fan.jpg" alt="Ventillo pour les disques">
- <figcaption>
-  J'ai complètement enlevé le cache de l'avant et ajouté un ventillo pour les disques.
- </figcaption>
-</figure>
-<figure class="cap-top" style="width:49%">
- <img src="/img/hyperion.button.jpg" alt="Bricolage du bouton">
-  <figcaption>
-  J'ai bricolé un bouton power accessible depuis l'arrière. Voyants compris !
-  Faites pas attention à la finition xD
- </figcaption>
-</figure>
-<figure class="cap-top" style="width:49%">
- <img src="/img/hyperion.button.inside.jpg" alt="Bricolage du bouton (intérieur)">
-  <figcaption>
-   L'envers du décors.
- </figcaption>
-</figure>
-<figure class="cap-top" style="width:49%">
- <img src="/img/hyperion.back.jpg" alt="Arrière avec la connectique">
-  <figcaption>
-   L'arrière, avec toute la connectique de branchée.
- </figcaption>
-</figure>
-</div>
-
-<p>Bon rien de vraiment fantastique, en même temps, j'ai rien eu à acheter, c'est
-tout de la récup. Ceci dit, maintenant que je sais que ça marche bien, ça va
-devenir le pilier du réseau et la prochaine version sera plein plus étudiée à
-tous les niveaux (si si, y compris l'esthétisme 😉).</p>
-
-<h1 id="installation-du-système-de-base">Installation du système de base</h1>
-
-<p>Évidement, mon choix pour la distribution va automatiquement
-à <a href="http://www.debian.org" target="_blank">Debian</a>. C'est stable, connu et ce fût longtemps ma distribution pour
-mes machines desktop. À vrai dire, maintenant, je préfère <a href="http://www.archlinux.org" target="_blank">Arch Linux</a> pour le
-desktop, mais je continue d'utiliser Debian pour mes serveurs.</p>
-
-<p>Je vous passe l'installation du système de base, on trouve des <a href="https://www.debian.org/releases/stable/i386/index.html.fr" target="_blank">tutorials</a> partout
-sur le net pour ça. Je vais juste faire quelques mots sur les choix de
-partitionnement:</p>
-
-<ul>
-<li><p>Le <em>3TB</em> possède déjà son partitionnement: 1 seule partition ext4 avec des
-données à conserver dedans. J'y ai pas touché durant l'installation.</p></li>
-
-<li><p>Le <em>1TB</em> est partitionné pour accueillir le système:</p></li>
-</ul>
-
-<table>
-<thead>
-<tr>
-<th>taille</th>
-<th>usage</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>256MB</td>
-<td>Partition de boot EFI</td>
-</tr>
-
-<tr>
-<td>256MB</td>
-<td>/boot</td>
-</tr>
-
-<tr>
-<td>15GB</td>
-<td>pour le système (/)</td>
-</tr>
-
-<tr>
-<td>8GB</td>
-<td>un bon gros swap</td>
-</tr>
-
-<tr>
-<td>le reste (~900GB)</td>
-<td>Un gros espace de stockage supplémentaire</td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li><p>Le <em>500GB</em> sera utilisé pour les VMs, avec <a href="https://en.wikipedia.org/wiki/Logical_volume_management" target="_blank">LVM</a></p></li>
-
-<li><p>Le <em>320GB</em>, hum, rien de prévu pour le moment, peut-être des backups</p></li>
-</ul>
-
-<p>Comme vous voyez, on reste extrêmement simpliste dans le partitionnement. Au
-moment de l'installation, je n'étais pas sûr que tout ce que je voulais faire
-fonctionnerait. Je modifierai au besoin plus tard, il reste plein de place
-partout de toute façon. 😄</p>
-
-<p>Et non, je n'ai pas mis de RAID, j'en avais envie mais je ne voulais pas perdre
-d'espace, et certains disques sont de vieux machins plutôt lents. Un jour je
-referai ça avec de gros disques neufs, le RAID6, btrfs, etc... Puis bon, c'est
-pas une machine destinée à faire de la haute disponibilité. Je rappelle que les
-RAID ce n'est pas du tout une backup, et si mon système de backup marche comme
-prévu, en cas de panne, ce sera rapidement remis en ligne.</p>
-
-<h1 id="installation-de-xen">Installation de Xen</h1>
-
-<p>Bon, on a un système de base correct, passons à <a href="https://en.wikipedia.org/wiki/Xen" target="_blank">Xen</a>.</p>
-
-<p>Petit topo sur Xen: Il s'agit d'un hyperviseur de virtualisation qui tourne sous
-la forme d'un micro kernel léger (moins de 1M de RAM). L'avantage par apport à
-d'autre solution comme <a href="https://en.wikipedia.org/wiki/VMware" target="_blank">VMware</a>, <a href="https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine" target="_blank">KVM</a> (<a href="https://en.wikipedia.org/wiki/QEMU" target="_blank">qemu</a>) ou <a href="https://en.wikipedia.org/wiki/VirtualBox" target="_blank">VirtualBox</a>, c'est
-que Xen permet de fonctionner en mode paravirtualisé (Nommé <strong>PV</strong> sous Xen),
-c-à-d qu'il n'a pas besoin des instructions de virtualisation incluses dans les
-processeurs récents ce qui permet une plus grande vitesse d'exécution.</p>
-
-<p>Il effectue cela en utilisant les <a href="https://en.wikipedia.org/wiki/Protection_ring" target="_blank">protection rings</a> des processeurs x86:
-Le microkernel Xen tourne en Ring 0 (le plus haut niveau), le kernel de l'OS
-(linux) tourne en Ring 1, et enfin les processus de l'espace utilisateur des
-différentes VMs tournent en Ring 2. Ceci nécessite que le kernel des machines
-invitées soit modifié pour le gérer (aucun soucis pour le kernel linux, c'est
-déjà inclus).</p>
-
-<p>Xen supporte aussi le mode virtualisé complet (nommé <strong>HVM</strong> dans Xen), utile
-pour les OS ne supportant pas le mode PV (comme Windows).</p>
-
-<p>Il possède aussi un mode hybride, mixant HVM pour le kernel invité, et PV pour
-les périphériques (via l'installation de driver, sous Windows notamment). Cela
-permet un gain en vitesse bien évidement.</p>
-
-<p>Autre chose, les machine virtuelles sous Xen sont nommées <strong>virtual domain</strong>, il
-y en a deux types: le dom0 et les domU.</p>
-
-<ul>
-<li>Le dom0 c'est la machine qui gère Xen et qui a un accès physique aux
-périphériques, On vient de l'installer ;)</li>
-<li>Les domU sont les machines invitées qui ont accès à des périphériques
-virtualisés, on verra comment en ajouter plus tard 😉</li>
-</ul>
-
-<p>Xen permet aussi de <a href="https://wiki.xen.org/wiki/Xen_PCI_Passthrough" target="_blank">PCI passthrough</a> qui permet de &quot;donner&quot; un
-périphérique PCI à un domU, c'est plutôt génial pour ce que j'ai envie de
-faire. Malheureusement, ma carte mère actuelle ne le permet pas (pas
-de <a href="https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit" target="_blank">IOMMU</a>). Pas grave, on fera tourner Kodi directement sur le dom0, c'est
-pas super pour la sécurité, mais je n'est pas le choix. La prochaine carte mère
-sera meilleure ;)</p>
-
-<p>Allons-y:</p>
-
-<pre><code class="language-sh">apt-get install xen-system-amd64 xen-tools 
+<pre><code class="language-sh">xen-create-image --verbose --hostname=tethys --memory=128M --vcpus=1 --size=2G --swap=128M --lvm=vg0 --nodhcp --pygrub --dist=jessie
 </code></pre>
 
-<p>Ensuite il faut redéfinir l'ordre de boot pour GRUB, par défaut il continue de
-booter sur le système normal. Il suffit de renommer un fichier pour cela, mais
-on va utilisé <code>dpkg-divert</code> pour que les mises à jour système de changent pas
-nos réglages:</p>
+<p>Cette commande va utiliser <a href="https://wiki.debian.org/fr/Debootstrap" target="_blank">debootstrap</a> et une série de script pour générer une
+image Debian bootable. Les options sont plutôt explicite et parlent d'elle-même:
+128M de RAM, 1 Virtual CPU, 2G de disque, 128M de SWAP, disque et SWAP à créer
+sur <code>vg0</code>, pas de DHCP, <a href="https://wiki.xen.org/wiki/PyGrub" target="_blank">pygrub</a> (un emulateur de GRUB en python adapté à
+Xen), et la version de Debian: Jessie (Debian 8).</p>
 
-<pre><code class="language-sh">dpkg-divert --divert /etc/grub.d/08_linux_xen --rename /etc/grub.d/20_linux_xen
+<p>Laisse la magie opérer... Devant un petit café éventuellement 😉</p>
+
+<p>À la fin, le script donnera un petit résumé, le plus important ici c'est de
+copier le mot de passe root dans un coin !</p>
+
+<h1 id="petits-ajustements">Petits ajustements</h1>
+
+<p>De base, <code>xen-create-image</code> prépare des VMs simples, en particulier, elles ne
+possèdent qu'une seule interface réseau. Ici, on veut faire un routeur, avec X
+interfaces. On va donc ajuster quelques peu le fichier de configuration de la
+VMs</p>
+
+<p>Le voici:</p>
+
+<pre><code class="language-sh">#
+# Configuration file for the Xen instance tethys, created
+# by xen-tools 4.5 on Mon Dec 28 07:25:34 2015.
+#
+
+#
+#  Kernel + memory size
+#
+
+
+bootloader = '/usr/lib/xen-4.4/bin/pygrub'
+
+vcpus       = '1'
+memory      = '128'
+
+
+#
+#  Disk device(s).
+#
+root        = '/dev/xvda2 ro'
+disk        = [
+                  'phy:/dev/vg0/tethys-disk,xvda2,w',
+                  'phy:/dev/vg0/tethys-swap,xvda1,w',
+              ]
+
+
+#
+#  Physical volumes
+#
+
+
+#
+#  Hostname
+#
+name        = 'tethys'
+
+#
+#  Networking
+#
+#dhcp        = 'dhcp'
+vif         =	[ 
+	 	'mac=00:16:3E:CA:6B:D0,bridge=brinet0', 
+		'mac=00:16:3E:CA:6B:D1,bridge=brlan0',
+		'mac=00:16:3E:CA:6B:D2,bridge=brap0', 
+		'mac=00:16:3E:CA:6B:D3,bridge=brdmz0', 
+		'mac=00:16:3E:CA:6B:D4,bridge=brcmz0', 
+		'mac=00:16:3E:CA:6B:D5,bridge=brcluster0' 
+		]
+
+#
+#  Behaviour
+#
+on_poweroff = 'destroy'
+on_reboot   = 'restart'
+on_crash    = 'restart'
 </code></pre>
 
-<p>On va ensuite réduire la mémoire utilisable par le dom0. Par défaut, le dom0 a
-droit à toute la mémoire, et Xen ajuste cela en cas de besoin pour les domU en
-utilisant une technique appelée le <a href="https://www.quora.com/Virtualization-What-is-memory-ballooning" target="_blank">memory ballooning</a>.</p>
+<p>La grande différence est la variable <code>vif</code>, je défini 6 interfaces réseau liées
+aux 6 bridges présents sur Hyperion (Je suggère de rejetter un coup d'oeil sur
+le <a href="/post/hyperion-part-3/#schéma-en-ascii">schéma</a> du réseau virtuel). J'y défini aussi leur adresse MAC.</p>
 
-<p>Techniquement, il &quot;vole&quot; de la mémoire inutilisé d'un ou plusieurs dom pour la
-passer à un autre. C'est très efficace pour économiser sur les barrettes de RAM,
-car sur tout un datacenter de virtualisation c'est quasi impossible que toutes
-les VMs utilisent toute la mémoire qui leur a été attribuée. Par contre, dans le
-cas où il y a vraiment un gros besoin en RAM sur toutes les VMs, ... Bin ça va
-poser problème...</p>
-
-<p>Personnellement, J'ai choisi de plutôt créer des VMs avec juste ce qu'il faut de
-RAM sans ballooning et elles utiliserons leur SWAP si besoin. Les VMs seront
-surtout des services réseaux, ayant une utilisation mémoire assez stable, en
-général 128M ou 256M suffira. C'est parfait pour mes besoins.</p>
-
-<p>Donc, réduisons la RAM pour le dom0, dans le fichier <code>/etc/default/grub</code> ajoutez
-cette ligne:</p>
-
-<pre><code class="language-sh">GRUB_CMDLINE_XEN_DEFAULT=&quot;dom0_mem=1536M&quot;
-</code></pre>
-
-<p>Alors oui, 1.5G c'est beaucoup trop pour un simple dom0, 128M aurait
-probablement suffit mais j'ai prévu un usage annexe pour le dom0, faire tourner
-deux Kodi en multiseat.</p>
-
-<p>Il n'y a plus qu'a faire:</p>
-
-<pre><code class="language-sh">update-grub
-reboot
-</code></pre>
-
-<p>Voilà, si tout s'est bien passé, la machine tourne sous Xen, dans son dom0. Vous
-pouvez faire <code>free</code> et vérifier que la mémoire disponible est bien de 1.5G.</p>
-
-<p>Dans les outils de monitoring Xen, on trouve <code>xentop</code>, c'est comme <code>top</code> mais
-pour les VMs.</p>
-
-<h1 id="lvm">LVM</h1>
-
-<p>On a pas parlé du lieu où serait stocké les images disque des VMs. Pour ça il
-existe <a href="https://wiki.xen.org/wiki/Storage_options" target="_blank">plusieurs solutions</a> avec Xen. On peut utiliser des fichiers
-basiques comme on le ferait avec VirtualBox (.raw, .qcow2 ou .vhd supporté), des
-stockages distants comme <a href="https://en.wikipedia.org/wiki/Network_File_System" target="_blank">NFS</a> et <a href="https://en.wikipedia.org/wiki/ISCSI" target="_blank">iSCSI</a>, ou <a href="https://en.wikipedia.org/wiki/Logical_volume_management" target="_blank">LVM</a>, c'est ce dernier que
-nous utiliserons. Les stockages distants vont être particulièrement utiles en
-cas de datacenter de virtualisation. Ils permettent
-la <a href="https://wiki.xenproject.org/wiki/Migration" target="_blank">live migration</a> des VMs de serveur en serveur.</p>
-
-<p>Petite explication sur la terminologie LVM:</p>
-
-<dl>
-<dt>PV</dt>
-<dd>Physical Volume, Il s'agit tout simplement d'une partition avec le type <code>0x8E</code>
-et une entête spécifique à LVM pour que le système le reconnaisse.</dd>
-<dt>VG</dt>
-<dd>Volume Group, Il s'agit d'un groupe de <code>PVs</code> utilisable pour créer des
-<code>LV</code>. Comme on peut le deviner, un <code>VG</code> peut s'étendre sur plusieurs disques, un
-peu comme le fait le <code>RAID 0</code>.</dd>
-<dt>LV</dt>
-<dd>Logical Volume, c'est une partition utilisable par <code>mkfs</code>, comme le serait
-<code>/dev/sda1</code>. Elle utilise tout ou une fraction du <code>VG</code> auquel elle appartient.</dd>
-</dl>
-
-<h2 id="installation">Installation</h2>
+<h1 id="premier-boot">Premier boot</h1>
 
 <p>Rien de plus simple:</p>
 
-<pre><code class="language-sh">apt-get install lvm2
+<pre><code class="language-sh">xl create /etc/xen/tethys.cfg
 </code></pre>
 
-<h2 id="partitionnement">Partitionnement</h2>
+<p>Afin que la VMs démarre automatiquement avec Hyperion il faut faire cela:</p>
 
-<p>J'ai choisi de créer un <code>VG</code> utilisant un unique <code>PV</code> situé sur une partition
-qui prendra tout le disque de 500G.</p>
-
-<p>Personnellement, j'aime utiliser <code>cfdisk</code> ou parfois <code>fdisk</code>, à vous de voir
-lequel vous préférez. Pensez bien à mettre le type <code>8E</code>, ce n'est pas
-indispensable car LVM scan les partitions au boot peu importe leur type mais un
-peu de &quot;good practice&quot;, ça fait pas de mal.</p>
-
-<h2 id="création-du-vg">Création du VG</h2>
-
-<p>Franchement, les commandes LVM sont très agréables à utiliser, simple et propre
-avec des pages de man claires. C'est pas toujours comme ça malheureusement.</p>
-
-<p>Alors, c'est super simple:</p>
-
-<pre><code class="language-sh">vgcreate vg0 /dev/sdc1
+<pre><code class="language-sh">mkdir /etc/xen/auto
+ln -s ../tethys.cfg /etc/xen/auto/tethys.cfg
 </code></pre>
 
-<p>Et c'est tout xD</p>
+<p>La machine a booté, on peut la voir avec <code>xentop</code>.</p>
 
-<p><code>vgcreate</code> va de lui même appeler <code>pvcreate</code> pour initialiser la partition et en
-faire un <code>PV</code>, et ensuite l'ajouter au nouveau <code>VG</code> nommé <code>vg0</code>.</p>
+<p>Théoriquement, on pourrait se connecter en SSH dessus directement, mais
+actuellement, 2 choses ne vont pas:</p>
 
-<p>On peut regarder l'état des <code>PVs</code>, <code>VGs</code> et <code>LVs</code> avec <code>pvs</code>, <code>vgs</code> et <code>lvs</code>:</p>
+<ul>
+<li>Pas de DHCP, donc aucunes des 6 interfaces ne possèdent d'adresse IP</li>
+<li>Le serveur SSH installé par défaut n'accepte pas que root se connecte en
+utilisant un mot de passe (uniquement des clés SSH) et aucun utilisateur n'a
+été créé.
+<br /></li>
+</ul>
 
-<pre><code class="language-sh">14:39 root@hyperion /etc/xen # pvs        
-  PV         VG   Fmt  Attr PSize   PFree  
-  /dev/sdc1  vg0  lvm2 a--  465.76g 445.51g
-14:39 root@hyperion /etc/xen # vgs
-  VG   #PV #LV #SN Attr   VSize   VFree  
-  vg0    1   6   0 wz--n- 465.76g 445.51g
-14:39 root@hyperion /etc/xen # lvs
-  LV          VG   Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
-  hadoop-disk vg0  -wi-ao----  10.00g                                                    
-  hadoop-swap vg0  -wi-ao----   4.00g                                                    
-  io-disk     vg0  -wi-a-----   4.00g                                                    
-  io-swap     vg0  -wi-a----- 128.00m                                                    
-  tethys-disk vg0  -wi-ao----   2.00g                                                    
-  tethys-swap vg0  -wi-ao---- 128.00m
+<h1 id="configuration-réseau">Configuration réseau</h1>
+
+<p>Commençons pas nous connecter sur la machine. Sans SSH c'est possible car xen
+fourni une console virtuelle sur port série.</p>
+
+<p>Un simple <code>xl console tethys</code> et nous y voilà, login: root, password: celui
+copier lors de la création de la VM. Pour quitter la console un simple <code>ctrl-]</code>
+suffit.</p>
+
+<p>Comme sur Hyperion, on va donner des noms un peu plus parlants que eth0, eth1,
+eth2, etc...</p>
+
+<p>Dans <code>/etc/udev/rules.d/70-persistent-net.rules</code>:</p>
+
+<pre><code class="language-sh">SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTR{address}==&quot;00:16:3e:ca:6b:d0&quot;, NAME=&quot;inet0&quot;
+SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTR{address}==&quot;00:16:3e:ca:6b:d1&quot;, NAME=&quot;lan0&quot;
+SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTR{address}==&quot;00:16:3e:ca:6b:d2&quot;, NAME=&quot;ap0&quot;
+SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTR{address}==&quot;00:16:3e:ca:6b:d3&quot;, NAME=&quot;dmz0&quot;
+SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTR{address}==&quot;00:16:3e:ca:6b:d4&quot;, NAME=&quot;cmz0&quot;
+SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTR{address}==&quot;00:16:3e:ca:6b:d5&quot;, NAME=&quot;cluster0&quot;
 </code></pre>
 
-<p>Vous pouvez voir que j'ai déjà quelques <code>LVs</code>. Dans tout les cas, je vous
-suggère d'aller lire d'avantage sur LVM, par exemple <a href="https://wiki.archlinux.org/index.php/LVM" target="_blank">ici</a>. Je ferai
-peut-être un post complet dessus un jour ;-)</p>
+<p>Et dans la foulée, on va aussi donner des adresses IP a tout ce petit monde.</p>
 
-<h1 id="la-suite">La suite</h1>
+<p>Dans <code>/etc/network/interfaces</code>:</p>
 
-<p>Au <a href="/post/hyperion-part-3/">prochain post</a>, on s'occupera du réseau. Il va falloir tout un post
-pour ça vu la complexité. Je vous rassure, de base, avec Xen c'est très simple,
-un <a href="https://en.wikipedia.org/wiki/Bridging_(networking)" target="_blank">bridge</a> et c'est bon. Mais je veux que le routeur/firewall soit virtualisé
-et il faut s'occuper du point d'accès wifi aussi, donc un post complet ce sera
-pas de trop.</p>
+<pre><code class="language-sh"># This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto inet0
+iface inet0 inet static
+	address 192.168.1.1
+	netmask 255.255.255.0
+	gateway 192.168.1.254
+
+auto lan0
+iface lan0 inet static
+	address 10.0.0.1
+	netmask 255.255.0.0		
+
+auto ap0
+iface ap0 inet static
+	address 10.1.0.1
+	netmask 255.255.0.0		
+
+auto dmz0
+iface dmz0 inet static
+	address 10.5.0.1
+	netmask 255.255.0.0
+
+auto cmz0
+iface cmz0 inet static
+	address 10.6.0.1
+	netmask 255.255.0.0
+
+auto cluster0
+iface cluster0 inet static
+	address 10.10.0.1
+	netmask 255.255.0.0
+</code></pre>
+
+<p>Et aussi, pourquoi, ajoutons notre clé SSH aux clés authorisées pour root (si
+vous n'avez pas de clé SSH, utilisez <code>ssh-keygen</code>):</p>
+
+<pre><code class="language-sh">mkdir /root/.ssh
+cat &gt; /root/.ssh/authorized_keys
+&lt;copiez-collez votre clé publique ici (~/.ssh/id_rsa.pub) et terminez par ctrl-d&gt;
+</code></pre>
+
+<p>Voilà, et hop ! Un reboot !</p>
+
+<p>En principe, on peut maintenant se connecter en SSH sur tethys avec un <code>ssh root@10.0.0.1</code>.</p>
+
+<h1 id="init">Init</h1>
+
+<p>Par défaut, Debian 8 est installé avec systemd, personnellement je n'ai rien
+contre, il s'avère même très pratique sur les machines desktop (en plus sous
+Arch Linux il n'y a que lui). Par contre pour un serveur comme <code>tethys</code>, je vais
+préférer le system de boot classique: <a href="https://fr.wikipedia.org/wiki/Init" target="_blank">init</a>.</p>
+
+<ol>
+<li><code>apt-get --purge install sysvinit-core</code></li>
+<li><code>echo &quot;co:2345:respawn:/sbin/getty hvc0 9600 linux&quot; &gt;&gt; /etc/inittab</code> (c'est
+pour avoir la console série virtuelle avec Xen (xl console tethys))</li>
+<li><code>reboot</code></li>
+<li><code>apt-get --purge remove systemd</code></li>
+</ol>
+
+<h1 id="routage-et-nat">routage et NAT</h1>
+
+<p>Bon c'est pas mal, mais ça route pas ! Par défaut linux ne route pas les paquets
+entre les interfaces. On va remèdier à cela.</p>
+
+<p>Dans un fichier créé pour l'occasion <code>/etc/sysctl.d/50-forwarding.conf</code>:</p>
+
+<pre><code class="language-sh">net.ipv4.ip_forward=1
+net.ipv4.conf.default.forwarding=1
+net.ipv4.conf.all.forwarding=1
+net.ipv6.conf.default.forwarding=1
+net.ipv6.conf.all.forwarding=1
+</code></pre>
+
+<p>Voilà, routage IPv4 et IPv6.</p>
+
+<p>Ensuite, le NAT, la box du FAI ne connait rien du réseau 10.x.x.x, On va donc
+faire du NAT sur <code>tethys</code> en utilisant <a href="https://fr.wikipedia.org/wiki/Netfilter" target="_blank">Netfilter</a>, le framework du kernel
+pour tout ce qui touche de près ou de loin au firewall.</p>
+
+<pre><code class="language-sh">iptables -t nat -A POSTROUTING -o inet0 -j MASQUERADE
+</code></pre>
+
+<p>En principe, maintenant, on peut se connecter sur internet à condition
+d'utiliser le DNS de la Box (192.168.1.254). On va arranger ça tout de suite.</p>
+
+<h1 id="dns-et-dhcp">DNS et DHCP</h1>
+
+<p>Je pourrais installer <a href="https://fr.wikipedia.org/wiki/BIND" target="_blank">Bind</a> et <a href="https://en.wikipedia.org/wiki/DHCPD" target="_blank">DHCPD</a>, mais autant DHCPD ça va, autant
+Bind c'est vraiment trop pour nos besoins. Il existe
+mieux: <a href="https://fr.wikipedia.org/wiki/Dnsmasq" target="_blank">dnsmasq</a>. Wikipedia dit &quot;petits réseaux famillial&quot; mais il peut
+parfaitement gérer tout un réseau d'entreprise à lui tout seul si on a pas
+besoin de fonctions avancées comme le transfert de zone, le stockage de zone
+dans des bases de données, etc... Dnsmasq est typiquement un cache DNS de
+résolution de nom de domaine avec DHCP intégré (il fait même TFTP et Boostrap
+pour booter vos machine par le réseau). En plus, la configuration est très simple.</p>
+
+<p>Allez !</p>
+
+<pre><code>apt-get install dnsmasq
+</code></pre>
+
+<p>Dans <code>/etc/dnsmasq.d/10core.conf</code> (n'importe quel nom en .conf conviendrait):</p>
+
+<pre><code># The domain
+domain=rxsoft.eu
+
+# Do not read resolv.conf
+no-resolv
+
+# Upstream servers
+## OpenNic (http://servers.opennicproject.org/)
+### Any Cast
+server=185.121.177.177
+server=2a05:dfc7:5::53
+server=185.121.177.53
+server=2a05:dfc7:5::5353
+server=185.190.82.182
+server=2a0b:1904:0:53::
+### FR
+server=87.98.175.85
+server=2001:41d0:2:73d4::100
+### FR
+server=5.135.183.146
+server=2001:41d0:8:be92::1
+### DE
+server=5.9.49.12
+server=2a01:4f8:161:4109::6
+### IT
+server=193.183.98.154
+server=2a00:dcc0:eda:98:183:193:d85a:389b
+### NL
+server=185.133.72.100
+server=2a05:b0c6:5e4::53
+### RO
+server=89.18.27.34
+server=2001:470:1f15:235::1
+## FreeDNS
+#server=37.235.1.174
+#server=37.235.1.177
+## Google
+#server=8.8.8.8
+#server=8.8.4.4
+## ISP box DNS
+#server=192.168.1.254
+
+# On which interface to listen for DNS/DHCP request
+interface=lan0
+interface=ap0
+interface=dmz0
+interface=cmz0
+interface=cluster0
+no-dhcp-interface=dmz0
+no-dhcp-interface=cmz0
+no-dhcp-interface=cluster0
+
+# Don not read /etc/hosts
+no-hosts
+# Read this one instead
+addn-hosts=/etc/hosts.local
+# Expand name without dot with the local domain name in the hosts file
+expand-hosts
+</code></pre>
+
+<ul>
+<li>J'ai mis une longue liste de DNS &quot;libres&quot; pour être sûr de na pas avoir de
+coupure au niveau du DNS.</li>
+<li>Je lui dit de travailler sur toutes les interfaces sauf celle connectée à la
+box du FAI.</li>
+<li>DHCP uniquement pour le LAN et le WIFI, les autres sous réseaux seront en IP
+statique.</li>
+<li>Le fichier <code>/etc/hosts.local</code> sera une mini DB de nom DNS locaux, au même
+format que <code>/etc/hosts</code>.
+<br /></li>
+</ul>
+
+<p>Et dans <code>/etc/dnsmasq.d/20dhcp.conf</code>:</p>
+
+<pre><code>dhcp-range=10.0.0.10,10.0.0.200,2h
+dhcp-range=10.1.0.10,10.1.0.200,2h
+dhcp-option=option:dns-server,10.0.0.1
+dhcp-authoritative
+</code></pre>
+
+<ul>
+<li>Les plages d'adresses IP pour les sous réseau du LAN et du WIFI.</li>
+<li>Où se trouve le serveur DNS.</li>
+<li>Le DHCP est le seul du réseau.</li>
+</ul>
+
+<p>Et voilà ! Un petit redémarrage de dnsmasq et tout l'Internet devrait s'ouvrir a
+vous.</p>
+
+<p>Il reste un petit quelques chose à faire, rendre les réglages Netfilter
+persistants entre les reboot.</p>
+
+<p>Il y a plusieurs solutions, je vais prendre la plus élémentaire: 3 lignes dans
+<code>/etc/rc.local</code>. Mais il y a aussi le paquet <code>iptables-persistent</code> par exemple.</p>
+
+<p>Dans <code>/etc/rc.local</code>:</p>
+
+<pre><code class="language-sh"># Active le NAT sur inet0
+iptables -t nat -A POSTROUTING -o inet0 -j MASQUERADE
+
+# Il y a un bug dans dnsmasq (ou dhcp-client, je suis pas sûr) qui fait que le
+# checksum UDP est incorrect, ces 2 règles Netfilter arrange le problème.
+iptables -t mangle -A POSTROUTING -o lan0 -p udp -m udp --dport 68 -j CHECKSUM --checksum-fill
+iptables -t mangle -A POSTROUTING -o ap0 -p udp -m udp --dport 68 -j CHECKSUM --checksum-fill
+</code></pre>
+
+<h1 id="le-prochain-post">Le prochain post</h1>
+
+<p>Au <a href="/post/hyperion-part-5/">prochain post</a>, Il faudra se concentrer sur les réglages kernel et
+Netfilter pour la sécurité.</p>
     </div>
     
     <footer>
@@ -636,16 +663,16 @@ pas de trop.</p>
       by <span itemprop="author">Xakz</span>
     
   
-  <time datetime="2016-01-18T18:23:54&#43;02:00">
-    18 Jan, 2016
+  <time datetime="2016-01-29T09:33:12&#43;02:00">
+    29 Jan, 2016
   </time>
   
     in <span itemprop="articleSection"><a href="/categories/administration/">Administration</a> and <a href="/categories/hyperion/">Hyperion</a></span>
   
   
-    and tagged <a href="/tags/admin/">admin</a>, <a href="/tags/hardware/">hardware</a>, <a href="/tags/linux/">linux</a>, <a href="/tags/network/">network</a> and <a href="/tags/xen/">xen</a>
+    and tagged <a href="/tags/admin/">admin</a>, <a href="/tags/dnsmasq/">dnsmasq</a>, <a href="/tags/linux/">linux</a>, <a href="/tags/network/">network</a> and <a href="/tags/xen/">xen</a>
   
-  using <span itemprop="wordCount">1804</span> words.
+  using <span itemprop="wordCount">1357</span> words.
 </p>
 
       
@@ -660,9 +687,9 @@ pas de trop.</p>
       
         <li><a href="/post/hadoop-dev-server/">Installer un pseudo-cluster Hadoop</a> &ndash; 5 minutes
       
-        <li><a href="/post/hyperion-part-4/">Hyperion, routeur tout-en-un: Round 3 - Tethys</a> &ndash; 7 minutes
-      
         <li><a href="/post/hyperion-part-3/">Hyperion, routeur tout-en-un: Round 2 - Le réseau</a> &ndash; 11 minutes
+      
+        <li><a href="/post/hyperion-part-2/">Hyperion, routeur tout-en-un: Round 1 - Xen</a> &ndash; 9 minutes
       
         <li><a href="/post/hyperion-part-1/">Hyperion, routeur tout-en-un: Round 0 - Préambule</a> &ndash; 4 minutes
       

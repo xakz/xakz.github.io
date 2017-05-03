@@ -4,7 +4,7 @@
     <meta name="generator" content="Hugo 0.21-DEV" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Network | Xakz&#39;s</title>
+    <title>Dnsmasq | Xakz&#39;s</title>
     <meta name="description" content="some description">
     <meta name="keywords" content="administration, big data, coding, hyperion, ">
     
@@ -18,10 +18,10 @@
   <meta name="author" content="Xakz">
 
 
-    <meta property="og:title" content="Network" />
+    <meta property="og:title" content="Dnsmasq" />
 <meta property="og:description" content="some description" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://xakz.github.io/tags/network/" />
+<meta property="og:url" content="http://xakz.github.io/tags/dnsmasq/" />
 
 
 
@@ -46,9 +46,9 @@
     
     
     
-      <link href="http://xakz.github.io/tags/network/index.xml" rel="alternate" type="application/rss+xml" title="Xakz&#39;s" />
+      <link href="http://xakz.github.io/tags/dnsmasq/index.xml" rel="alternate" type="application/rss+xml" title="Xakz&#39;s" />
     
-    <link rel="canonical" href="http://xakz.github.io/tags/network/">
+    <link rel="canonical" href="http://xakz.github.io/tags/dnsmasq/">
     
     
     <link rel="icon" sizes="any" href="data:image/svg+xml,%3Csvg%20viewBox='0%200%2046%2045'%20xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3EAfter%20Dark%3C/title%3E%3Cpath%20d='M.708%2045L23%20.416%2045.292%2045H.708zM35%2038L23%2019%2011%2038h24z'%20fill='%23000'/%3E%3C/svg%3E">
@@ -217,7 +217,7 @@ figure:hover:before { opacity: 0; }
 </header>
     <main>
   <header>
-    <h1>Network</h1>
+    <h1>Dnsmasq</h1>
   </header>
   
     <article itemscope itemtype="http://schema.org/CreativeWork">
@@ -256,173 +256,6 @@ le domU du routeur-firewall, nommé <code>tethys</code>.</p>
   <meta itemprop="inLanguage" content="fr">
   <meta itemprop="datePublished" content="2016-01-29T09:33:12&#43;02:00">
   <meta itemprop="dateModified" content="2016-01-29T09:33:12&#43;02:00">
-  
-</article>
-
-  
-    <article itemscope itemtype="http://schema.org/CreativeWork">
-  <header>
-    <h2 itemprop="name">
-      <a href="/post/hyperion-part-3/">Hyperion, routeur tout-en-un: Round 2 - Le réseau</a>
-    </h2>
-    
-      <p class="muted"><svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-  <circle cx="16" cy="16" r="14" />
-  <path d="M16 8 L16 16 20 20" />
-</svg>
-<span>11 minute read</span>
-<svg style="margin-bottom: -3px" class="i-edit" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-  <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
-</svg>
-
-  Published: <time datetime="2016-01-22T13:53:21&#43;02:00">22 Jan, 2016</time>
-
-</p>
-    
-  </header>
-  
-    <blockquote itemprop="headline">Mise en place de toute la tuyauterie réseau, un vrai déluge d&#39;interface !
-</blockquote>
-  
-  <div itemprop="description">
-    <p>Haaaaa le réseau :'-) J'adore ça !</p>
-
-<p>Au <a href="/post/hyperion-part-2/">précédant post</a> j'avais configuré de quoi avoir un Xen qui marche mais
-ça ne suffit pas car rien n'avait été fait pour que les VMs puissent avoir accès
-au réseau. Il est temps de remédier à cela.</p>
-
-<p>Tout d'abord, une petite description des contraintes:</p>
-
-<ul>
-<li>Je veux que le routeur/firewall du réseau soit une VMs, pas question que ce
-soit Hyperion qui soit le routeur. Cela augmentera sensiblement la
-sécurité. Il ne s'occupera que de router et filtrer les paquets. Pour des
-raisons pratiques, j'y mettrai aussi le cache DNS et le serveur DHCP. Je
-pourrais faire des VMs séparées pour ces deux derniers mais bon, faut pas
-exagérer, c'est pas la NSA non plus.</li>
-</ul>
-
-<p></p>
-  </div>
-  
-    <p><a itemprop="url" href="/post/hyperion-part-3/">Read More&nbsp;&raquo;</a></p>
-  
-  <meta itemprop="inLanguage" content="fr">
-  <meta itemprop="datePublished" content="2016-01-22T13:53:21&#43;02:00">
-  <meta itemprop="dateModified" content="2016-01-22T13:53:21&#43;02:00">
-  
-</article>
-
-  
-    <article itemscope itemtype="http://schema.org/CreativeWork">
-  <header>
-    <h2 itemprop="name">
-      <a href="/post/hyperion-part-2/">Hyperion, routeur tout-en-un: Round 1 - Xen</a>
-    </h2>
-    
-      <p class="muted"><svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-  <circle cx="16" cy="16" r="14" />
-  <path d="M16 8 L16 16 20 20" />
-</svg>
-<span>9 minute read</span>
-<svg style="margin-bottom: -3px" class="i-edit" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-  <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
-</svg>
-
-  Published: <time datetime="2016-01-18T18:23:54&#43;02:00">18 Jan, 2016</time>
-
-</p>
-    
-  </header>
-  
-    <blockquote itemprop="headline">Montage de la bête, installation 
-du système et mise en place de la virtualisation</blockquote>
-  
-  <div itemprop="description">
-    <p>Je rappelle donc les objectifs définis lors du <a href="/post/hyperion-part-1/">précédant post</a>:
-construire un routeur/firewall/serveur de dev/double media center à moindre
-coûts et avec le maximum de sécurité. Pour ce faire, j'ai prévu de faire le plus
-de récup possible dans mes 3 étagères bourrées de pièces d'ordi.</p>
-
-<h1 id="mes-trouvailles">Mes trouvailles</h1>
-
-<ul>
-<li>Une <a href="https://www.msi.com/Motherboard/B75MA-E33.html" target="_blank">MSI B75MA-E33</a> avec un <a href="http://ark.intel.com/products/71072/Intel-Celeron-Processor-G1610-2M-Cache-2_60-GHz" target="_blank">Celeron G1610</a>.  Avec ça j'aurais
-1 port SATA 6Gbps, 3 ports SATA 3Gbps (ça suffira amplement vu que l'entonnoir
-ici sera l'ethernet), USB3, Ethernet 1Gbps, Intel Graphic HD inclu dans le
-processeur et un port HDMI (sur les deux nécessaires).
-<br /></li>
-</ul>
-
-<p></p>
-  </div>
-  
-    <p><a itemprop="url" href="/post/hyperion-part-2/">Read More&nbsp;&raquo;</a></p>
-  
-  <meta itemprop="inLanguage" content="fr">
-  <meta itemprop="datePublished" content="2016-01-18T18:23:54&#43;02:00">
-  <meta itemprop="dateModified" content="2016-01-18T18:23:54&#43;02:00">
-  
-</article>
-
-  
-    <article itemscope itemtype="http://schema.org/CreativeWork">
-  <header>
-    <h2 itemprop="name">
-      <a href="/post/hyperion-part-1/">Hyperion, routeur tout-en-un: Round 0 - Préambule</a>
-    </h2>
-    
-      <p class="muted"><svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-  <circle cx="16" cy="16" r="14" />
-  <path d="M16 8 L16 16 20 20" />
-</svg>
-<span>4 minute read</span>
-<svg style="margin-bottom: -3px" class="i-edit" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-  <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
-</svg>
-
-  Published: <time datetime="2016-01-16T09:20:34&#43;02:00">16 Jan, 2016</time>
-
-</p>
-    
-  </header>
-  
-    <blockquote itemprop="headline">Création d&#39;un serveur tout-en-un, avec toutes les
-fonctionnalités dont un devOps peut rêver: Introduction</blockquote>
-  
-  <div itemprop="description">
-    <p>L'idée c'est de nous faire une machine <strong>vraiment-tout-en-un</strong> à pas trop
-cher. Ça tombe bien on avait justement une carte mère avec son processeur plutôt
-pas mal qui traînait à la maison. c'est
-une <a href="https://www.msi.com/Motherboard/B75MA-E33.html" target="_blank">MSI B75MA-E33</a> avec
-un
-<a href="http://ark.intel.com/products/71072/Intel-Celeron-Processor-G1610-2M-Cache-2_60-GHz" target="_blank">Celeron G1610</a>.
-Alors OK, les gamers vont me huer ici, mais je rappelle que le but c'est de
-minimiser la consommation en maximisant des fonctionnalités. Et il y a tout ce
-qu'il faut: <strong>1Gbps</strong>, <strong>USB3</strong>, <strong>SATA 6Gb/s</strong>, <strong>HDMI</strong>, <strong>virtualisation</strong>,
-et même un petit format pour rentrer dans tous les boîtiers.</p>
-
-<h1 id="c-koikonveu-ou-cahier-des-charges-pour-les-puristes">C koikonveu ? (ou &quot;cahier des charges&quot; pour les puristes)</h1>
-
-<p>Voilà ce que nous voulons avoir comme service basiques:</p>
-
-<ul>
-<li><a href="https://fr.wikipedia.org/wiki/Routeur" target="_blank">Routeur</a></li>
-<li><a href="https://fr.wikipedia.org/wiki/Pare-feu_(informatique)" target="_blank">Firewall</a></li>
-<li><a href="https://fr.wikipedia.org/wiki/Domain_Name_System" target="_blank">DNS</a></li>
-<li><a href="https://fr.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol" target="_blank">DHCP</a></li>
-<li><a href="https://fr.wikipedia.org/wiki/Point_d%27acc%C3%A8s_sans_fil" target="_blank">Access Point Wifi</a></li>
-<li><a href="https://fr.wikipedia.org/wiki/IPv6" target="_blank">IPv6</a></li>
-</ul>
-
-<p></p>
-  </div>
-  
-    <p><a itemprop="url" href="/post/hyperion-part-1/">Read More&nbsp;&raquo;</a></p>
-  
-  <meta itemprop="inLanguage" content="fr">
-  <meta itemprop="datePublished" content="2016-01-16T09:20:34&#43;02:00">
-  <meta itemprop="dateModified" content="2016-01-16T09:20:34&#43;02:00">
   
 </article>
 

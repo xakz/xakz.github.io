@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dnsmasq on Xakz&#39;s</title>
+    <link>http://xakz.github.io/tags/dnsmasq/</link>
+    <description>Recent content in Dnsmasq on Xakz&#39;s</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language>
+    <lastBuildDate>Fri, 29 Jan 2016 09:33:12 +0200</lastBuildDate>
+    
+	<atom:link href="http://xakz.github.io/tags/dnsmasq/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hyperion, routeur tout-en-un: Round 3 - Tethys</title>
+      <link>http://xakz.github.io/post/hyperion-part-4/</link>
+      <pubDate>Fri, 29 Jan 2016 09:33:12 +0200</pubDate>
+      
+      <guid>http://xakz.github.io/post/hyperion-part-4/</guid>
+      <description>&lt;p&gt;Voilà, toute la tuyauterie coté dom0 est en place, il nous faut maintenant créer
+le domU du routeur-firewall, nommé &lt;code&gt;tethys&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
