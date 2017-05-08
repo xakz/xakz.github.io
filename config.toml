@@ -11,6 +11,7 @@ enableEmoji = true
 disqusShortname = ""
 footnoteReturnLinkContents = "↩"
 SectionPagesMenu = "main"
+googleAnalytics = "UA-98687773-1"
 # color-codes for highlighting derived from this style
 #pygmentsStyle = "monokai"
 # true: use pygments-css or false: color-codes directly
