@@ -115,10 +115,6 @@ article [itemprop="description"] {
   margin-bottom: 20px;
   margin-top: 20px;
 }
-p {
-  hyphens: auto;
-  text-align: justify;
-}
 @media screen and (min-width: 768px) {
   html {
     font-size: 1em;
@@ -242,7 +238,8 @@ sur github.io avec Hugo (en la rendant d&#39;abord plus compliquée)
 
     <header>
       <h1 itemprop="headline">Hugo Délire !</h1>
-      <p class="muted"><svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+      <p class="muted">
+        <svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
   <circle cx="16" cy="16" r="14" />
   <path d="M16 8 L16 16 20 20" />
 </svg>
@@ -253,7 +250,8 @@ sur github.io avec Hugo (en la rendant d&#39;abord plus compliquée)
 
   Published: <time datetime="2017-04-30T18:54:04&#43;02:00">30 Apr, 2017</time>
 
-</p>
+
+      </p>
     </header>
     
       <blockquote itemprop="description">Ou comment se faciliter la vie pour la publication de son site
